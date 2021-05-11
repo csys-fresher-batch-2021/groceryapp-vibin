@@ -3,7 +3,7 @@
 <%@page import="java.util.Map"%>
 <%@page import="java.time.LocalDate"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <title>GroceryManagementApp</title>
 </head>
@@ -12,13 +12,14 @@
 	<main class="container-fluid">
 		<h3>List of products</h3>
 		<table class="table table-bordered">
+		<caption>List of Products</caption>
 			<thead>
 				<tr>
-					<th>S.NO</th>
-					<th>ID</th>
-					<th>Product Name</th>
-					<th>Price(Rs)/Quantity(n)</th>
-					<th>Available Quantity(n)</th>
+					<th id="sNo">S.NO</th>
+					<th id="id">ID</th>
+					<th id="productName">Product Name</th>
+					<th id="price">Price(Rs)/Quantity(n)</th>
+					<th id="quantity">Available Quantity(n)</th>
 			</thead>
 			<%
 			int i = 0;
