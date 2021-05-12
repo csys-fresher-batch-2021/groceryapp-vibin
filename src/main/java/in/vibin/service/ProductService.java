@@ -5,13 +5,14 @@ import java.util.Map;
 
 public class ProductService {
 	private ProductService() {
-		
+
 	}
+
 	private static final Map<Integer, String> product = new HashMap<>();
 	static {
-		product.put(31, "Milk");
-		product.put(45, "Bread");
-		product.put(50, "Wheat");
+		product.put(31, "milk");
+		product.put(45, "bread");
+		product.put(50, "wheat");
 	}
 	private static final Map<Integer, Double> productPrice = new HashMap<>();
 	static {
@@ -42,5 +43,4 @@ public class ProductService {
 	public static Map<Integer, Integer> getProductsQuantity() {
 		return productQuantity;
 	}
-
 }

@@ -1,5 +1,3 @@
-<%@page import="java.util.Date"%>
-<%@page import="java.time.LocalDate"%>
 <html>
 <head>
 <title>MyApp</title>
