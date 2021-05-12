@@ -45,5 +45,6 @@
 			%>
 		</table>
 	</main>
+	<a href="addproduct.jsp">ADD Product</a>
 </body>
 </html>

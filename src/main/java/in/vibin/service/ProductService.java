@@ -43,4 +43,24 @@ public class ProductService {
 	public static Map<Integer, Integer> getProductsQuantity() {
 		return productQuantity;
 	}
+
+	public static int addProduct(int ID, String name, double price, int quantity) {
+		String trimName = name.toLowerCase().trim();
+		int isAdded = 0;
+		if (product.containsKey(ID) && (product.containsValue(trimName))) {
+			isAdded = 1;
+		} else if (product.containsKey(ID)) {
+			isAdded = 2;
+		} else if (product.containsValue((trimName))) {
+			isAdded = 3;
+		} else {
+			product.put(ID, trimName);
+			productPrice.put(ID, price);
+			productQuantity.put(ID, quantity);
+			isAdded = 4;
+		}
+		return isAdded;
+
+	}
+
 }
