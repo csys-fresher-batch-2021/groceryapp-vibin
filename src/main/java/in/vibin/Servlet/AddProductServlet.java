@@ -14,34 +14,47 @@ import in.vibin.service.ProductService;
  */
 @WebServlet("/AddProductServlet")
 public class AddProductServlet extends HttpServlet {
+
 	private static final long serialVersionUID = 1L;
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("productID"));
-		String name = request.getParameter("name").trim().toLowerCase();
-		double price = Double.parseDouble(request.getParameter("price"));
-		int quantity = Integer.parseInt(request.getParameter("quantity"));
-		boolean isValidID = NumberValidation.checkNumber(id);
-		boolean isValidQuantity = NumberValidation.checkNumber(quantity);
-		boolean isValidName = StringValidation.checkString(name);
-		boolean isValidPrice = DecimalValidation.checkDecimal(price);
-		int isAdded = 0;
-		if (isValidID && isValidQuantity && isValidName && isValidPrice) {
-			isAdded = ProductService.addProduct(id, name, price, quantity);
-		}
-		if (isAdded == 1) {
-			String errorMessage = "ID and Name already exist";
+		try {
+			String name = request.getParameter("name").trim().toLowerCase();
+			int id = NumberValidation.parseInt(request.getParameter("productID"), "Invalid ID");
+			double price = NumberValidation.parseDouble(request.getParameter("price"), "Invalid price");
+			int quantity = NumberValidation.parseInt(request.getParameter("quantity"), "Invalid quantity");
+			boolean isValidID = NumberValidation.checkNumber(id);
+			boolean isValidQuantity = NumberValidation.checkNumber(quantity);
+			boolean isValidName = StringValidation.checkString(name);
+			boolean isValidPrice = DecimalValidation.checkDecimal(price);
+			int isAdded = 0;
+			String errorMessage = null;
+			String infoMessage = null;
+			if (isValidID && isValidQuantity && isValidName && isValidPrice) {
+				isAdded = ProductService.addProduct(id, name, price, quantity);
+			}
+			if (isAdded == 1) {
+				errorMessage = "ID and Name already exist";
+				response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);
+			} else if (isAdded == 2) {
+				errorMessage = "ID already exist";
+				response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);
+			} else if (isAdded == 3) {
+				errorMessage = "Name already exist";
+				response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);
+			} else if(isAdded==4){
+				infoMessage = "Product added successfully ";
+				response.sendRedirect("addproduct.jsp?infoMessage=" + infoMessage);
+			}
+			else {
+				errorMessage = "Invalid Inputs";
+				response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);
+			}
+		} catch (Exception e) {
+			String errorMessage = e.getMessage();
 			response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);
-		} else if (isAdded == 2) {
-			String errorMessage = "ID already exist";
-			response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);
-		} else if (isAdded == 3) {
-			String errorMessage = "Name already exist";
-			response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);
-		} else {
-			String infoMessage = "Product successfully added";
-			response.sendRedirect("addproduct.jsp?infoMessage=" + infoMessage);
 		}
 	}
 }

@@ -16,4 +16,13 @@ public class DecimalValidation {
 		}
 		return isValid;
 	}
+	public static double parseDouble(String number, String errorMessage) {
+		double value = 0;
+		try {
+			value = Double.parseDouble(number);
+		} catch (NumberFormatException e) {
+			throw new RuntimeException(errorMessage);
+		}
+		return value;
+	}
 }

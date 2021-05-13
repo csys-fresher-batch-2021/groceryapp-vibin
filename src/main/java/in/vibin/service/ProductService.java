@@ -3,6 +3,10 @@ package in.vibin.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import in.vibin.Validator.DecimalValidation;
+import in.vibin.Validator.NumberValidation;
+import in.vibin.Validator.StringValidation;
+
 public class ProductService {
 	private ProductService() {
 
@@ -45,8 +49,13 @@ public class ProductService {
 	}
 
 	public static int addProduct(int ID, String name, double price, int quantity) {
-		String trimName = name.toLowerCase().trim();
+		boolean isValidID = NumberValidation.checkNumber(ID);
+		boolean isValidQuantity = NumberValidation.checkNumber(quantity);
+		boolean isValidName = StringValidation.checkString(name);
+		boolean isValidPrice = DecimalValidation.checkDecimal(price);
 		int isAdded = 0;
+		if (isValidID && isValidQuantity && isValidName && isValidPrice) {
+		String trimName = name.toLowerCase().trim();
 		if (product.containsKey(ID) && (product.containsValue(trimName))) {
 			isAdded = 1;
 		} else if (product.containsKey(ID)) {
@@ -59,8 +68,6 @@ public class ProductService {
 			productQuantity.put(ID, quantity);
 			isAdded = 4;
 		}
-		return isAdded;
-
+	}return isAdded;
 	}
-
 }

@@ -16,4 +16,25 @@ public class NumberValidation {
 		}
 		return isValid;
 	}
+
+	public static int parseInt(String number, String errorMessage) {
+		int value = 0;
+		try {
+			value = Integer.parseInt(number);
+			return value;
+		} catch (NumberFormatException e) {
+			throw new RuntimeException(errorMessage);
+		}
+		
+	}
+	public static double parseDouble(String number, String errorMessage) {
+		double value = 0;
+		try {
+			value = Double.parseDouble(number);
+			return value;
+		} catch (NumberFormatException e) {
+			throw new RuntimeException(errorMessage);
+		}
+		
+	}
 }
