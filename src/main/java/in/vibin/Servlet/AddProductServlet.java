@@ -25,10 +25,10 @@ public class AddProductServlet extends HttpServlet {
 			int id = NumberValidation.parseInt(request.getParameter("productID"), "Invalid ID");
 			double price = NumberValidation.parseDouble(request.getParameter("price"), "Invalid price");
 			int quantity = NumberValidation.parseInt(request.getParameter("quantity"), "Invalid quantity");
-			boolean isValidID = NumberValidation.checkNumber(id);
-			boolean isValidQuantity = NumberValidation.checkNumber(quantity);
+			boolean isValidID = NumberValidation.checkInteger(id);
+			boolean isValidQuantity = NumberValidation.checkInteger(quantity);
 			boolean isValidName = StringValidation.checkString(name);
-			boolean isValidPrice = DecimalValidation.checkDecimal(price);
+			boolean isValidPrice = NumberValidation.checkDecimal(price);
 			int isAdded = 0;
 			String errorMessage = null;
 			String infoMessage = null;
@@ -37,24 +37,29 @@ public class AddProductServlet extends HttpServlet {
 			}
 			if (isAdded == 1) {
 				errorMessage = "ID and Name already exist";
-				response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);
+				response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);// send the message to the
+																						// addproduct.jsp
 			} else if (isAdded == 2) {
 				errorMessage = "ID already exist";
-				response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);
+				response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);// send the message to the
+																						// addproduct.jsp
 			} else if (isAdded == 3) {
 				errorMessage = "Name already exist";
-				response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);
-			} else if(isAdded==4){
+				response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);// send the message to the
+																						// addproduct.jsp
+			} else if (isAdded == 4) {
 				infoMessage = "Product added successfully ";
-				response.sendRedirect("addproduct.jsp?infoMessage=" + infoMessage);
-			}
-			else {
+				response.sendRedirect("addproduct.jsp?infoMessage=" + infoMessage);// send the message to the
+																					// addproduct.jsp
+			} else {
 				errorMessage = "Invalid Inputs";
-				response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);
+				response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);// send the message to the
+																						// addproduct.jsp
 			}
 		} catch (Exception e) {
 			String errorMessage = e.getMessage();
-			response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);
+			response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);// send the message to the
+																					// addproduct.jsp
 		}
 	}
 }

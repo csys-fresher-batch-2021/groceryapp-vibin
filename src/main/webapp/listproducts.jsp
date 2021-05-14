@@ -1,4 +1,4 @@
-<%@page import="in.vibin.service.ProductService"%>
+<%@page import="in.vibin.Util.*"%>
 <%@page import="java.util.Map"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,9 +21,9 @@
 			</thead>
 			<%
 			int i = 0;
-			Map<Integer, String> Product = ProductService.getProducts();
-			Map<Integer, Double> ProductPrice = ProductService.getProductsPrice();
-			Map<Integer, Integer> ProductQuantity = ProductService.getProductsQuantity();
+			Map<Integer, String> Product = Util.getProducts();
+			Map<Integer, Double> ProductPrice = Util.getProductsPrice();
+			Map<Integer, Integer> ProductQuantity = Util.getProductsQuantity();
 			for (Integer id : Product.keySet()) {
 				String value = Product.get(id);
 				double price = ProductPrice.get(id);

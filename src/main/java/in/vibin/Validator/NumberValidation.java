@@ -2,12 +2,14 @@ package in.vibin.Validator;
 
 public class NumberValidation {
 	/**
-	 * To check the number is not <=0
+	 * To check the number is not <=0 The method will return, return true=>If the
+	 * number is greater than 0. return false=>If the number is less than or equalto
+	 * 0.
 	 * 
 	 * @param number
 	 * @return
 	 */
-	public static boolean checkNumber(int number) {
+	public static boolean checkInteger(int number) {
 		boolean isValid = true;
 		if (number <= 0) {
 			isValid = false;
@@ -17,6 +19,33 @@ public class NumberValidation {
 		return isValid;
 	}
 
+	/**
+	 * To check the number is not <=0.0 The method will return, return true=> If the
+	 * number is greater than 0.0 return false=> If the number is less than or
+	 * equalto 0.0
+	 * 
+	 * @param number
+	 * @return
+	 */
+	public static boolean checkDecimal(double price) {
+		boolean isValid = true;
+		if (price <= 0.0) {
+			isValid = false;
+		} else {
+			isValid = true;
+		}
+		return isValid;
+	}
+
+	/**
+	 * This method is used to convert the String into a integer value. And it can
+	 * also throw an error message which is given by the user. The method format is,
+	 * parseDouble(String number, String errorMessage)
+	 * 
+	 * @param number
+	 * @param errorMessage
+	 * @return
+	 */
 	public static int parseInt(String number, String errorMessage) {
 		int value = 0;
 		try {
@@ -25,8 +54,18 @@ public class NumberValidation {
 		} catch (NumberFormatException e) {
 			throw new RuntimeException(errorMessage);
 		}
-		
+
 	}
+
+	/**
+	 * This method is used to convert the String into a deimal value. And it can
+	 * also throw an error message which is given by the user. The method format is,
+	 * parseDouble(String number, String errorMessage)
+	 * 
+	 * @param number
+	 * @param errorMessage
+	 * @return
+	 */
 	public static double parseDouble(String number, String errorMessage) {
 		double value = 0;
 		try {
@@ -35,6 +74,7 @@ public class NumberValidation {
 		} catch (NumberFormatException e) {
 			throw new RuntimeException(errorMessage);
 		}
-		
+
 	}
+
 }
