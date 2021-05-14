@@ -55,4 +55,10 @@ public class ProductService {
 		return isAdded;
 	}
 
+	// test purpose only
+	public static void deleteProduct(int id) {
+		product.remove(id);
+		productPrice.remove(id);
+		productQuantity.remove(id);
+	}
 }

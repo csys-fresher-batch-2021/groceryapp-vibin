@@ -1,9 +1,9 @@
-package in.vibin.aUtil;
+package in.vibin.Util;
 
 import static org.junit.Assert.*;
 
 import java.util.Map;
-import in.vibin.Util.*;
+
 import org.junit.Test;
 
 public class DisplayTest {

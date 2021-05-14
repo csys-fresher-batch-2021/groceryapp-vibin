@@ -1,7 +1,8 @@
-package in.vibin.bservice;
+package in.vibin.service;
 
 import static org.junit.Assert.*;
-import in.vibin.service.*;
+
+import org.junit.AfterClass;
 import org.junit.Test;
 
 public class AddProductTest {
@@ -125,6 +126,12 @@ public class AddProductTest {
 		int quantity = 55;
 		int isAdded = ProductService.addProduct(ID, name, price, quantity);
 		assertEquals(4, isAdded);
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+		int ID = 66;
+		ProductService.deleteProduct(ID);
 	}
 
 }
