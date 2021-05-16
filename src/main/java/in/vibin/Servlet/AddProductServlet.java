@@ -57,9 +57,12 @@ public class AddProductServlet extends HttpServlet {
 																						// addproduct.jsp
 			}
 		} catch (Exception e) {
+			try {
 			String errorMessage = e.getMessage();
-			response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);// send the message to the
-																					// addproduct.jsp
+			response.sendRedirect("addproduct.jsp?errorMessage=" + errorMessage);// send the message to the addproduct.jsp
+			}catch(Exception e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
 }
