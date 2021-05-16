@@ -1,4 +1,4 @@
-package in.vibin.Validator;
+package in.vibin.validator;
 
 import static org.junit.Assert.*;
 

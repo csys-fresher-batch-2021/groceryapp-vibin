@@ -1,4 +1,4 @@
-package in.vibin.Validator;
+package in.vibin.validator;
 
 import static org.junit.Assert.*;
 
@@ -13,8 +13,6 @@ public class IntegerConvertorTest {
 		try {
 			number1 = NumberValidation.parseInt(number, "InvalidInput");
 		} catch (Exception e) {
-			String errorMessage = e.getMessage();
-			System.out.println(errorMessage);
 		}
 		assertEquals(10, number1);
 	}

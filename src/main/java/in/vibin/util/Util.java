@@ -1,4 +1,4 @@
-package in.vibin.Util;
+package in.vibin.util;
 
 import java.util.HashMap;
 import java.util.Map;

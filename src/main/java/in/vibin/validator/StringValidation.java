@@ -1,6 +1,8 @@
-package in.vibin.Validator;
+package in.vibin.validator;
 
 public class StringValidation {
+	private StringValidation() {
+	}
 	/**
 	 * To check the string is not null. This method will return, reutrn true => If
 	 * it is a valid string. return false =>If it is a invalid string.

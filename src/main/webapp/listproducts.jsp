@@ -1,4 +1,4 @@
-<%@page import="in.vibin.Util.*"%>
+<%@page import="in.vibin.util.*"%>
 <%@page import="java.util.Map"%>
 <!DOCTYPE html>
 <html lang="en">

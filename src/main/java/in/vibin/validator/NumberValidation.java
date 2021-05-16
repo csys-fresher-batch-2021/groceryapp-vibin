@@ -1,6 +1,8 @@
-package in.vibin.Validator;
+package in.vibin.validator;
 
 public class NumberValidation {
+	private NumberValidation() {
+	}
 	/**
 	 * To check the number is not <=0 The method will return, return true=>If the
 	 * number is greater than 0. return false=>If the number is less than or equalto
@@ -52,7 +54,7 @@ public class NumberValidation {
 			value = Integer.parseInt(number);
 			return value;
 		} catch (NumberFormatException e) {
-			throw new RuntimeException(errorMessage);
+			throw new NumberFormatException(errorMessage);
 		}
 
 	}
@@ -72,7 +74,7 @@ public class NumberValidation {
 			value = Double.parseDouble(number);
 			return value;
 		} catch (NumberFormatException e) {
-			throw new RuntimeException(errorMessage);
+			throw new NumberFormatException(errorMessage);
 		}
 
 	}

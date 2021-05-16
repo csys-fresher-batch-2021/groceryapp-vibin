@@ -1,8 +1,9 @@
 package in.vibin.service;
 
 import java.util.Map;
-import in.vibin.Util.Util;
-import in.vibin.Validator.*;
+
+import in.vibin.util.Util;
+import in.vibin.validator.*;
 
 public class ProductService {
 
