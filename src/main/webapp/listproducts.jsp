@@ -1,4 +1,4 @@
-<%@page import="in.vibin.service.ProductService"%>
+<%@page import="in.vibin.util.*"%>
 <%@page import="java.util.Map"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,14 +16,14 @@
 					<th id="sNo">S.NO</th>
 					<th id="id">ID</th>
 					<th id="productName">Product Name</th>
-					<th id="price">Price(Rs)/Quantity(n)</th>
-					<th id="quantity">Available Quantity(n)</th>
+					<th id="price">Price per Quantity</th>
+					<th id="quantity">Available Quantity</th>
 			</thead>
 			<%
 			int i = 0;
-			Map<Integer, String> Product = ProductService.getProducts();
-			Map<Integer, Double> ProductPrice = ProductService.getProductsPrice();
-			Map<Integer, Integer> ProductQuantity = ProductService.getProductsQuantity();
+			Map<Integer, String> Product =Util.getProducts();
+			Map<Integer, Double> ProductPrice =Util.getProductsPrice();
+			Map<Integer, Integer> ProductQuantity =Util.getProductsQuantity();
 			for (Integer id : Product.keySet()) {
 				String value = Product.get(id);
 				double price = ProductPrice.get(id);
@@ -36,8 +36,8 @@
 					<td><%=serialNo%></td>
 					<td><%=id%></td>
 					<td><%=value%></td>
-					<td>Rs.<%=price%></td>
-					<td><%=quantity%>n</td>
+					<td>Rs. <%=price%></td>
+					<td><%=quantity%></td>
 				</tr>
 			</tbody>
 			<%
@@ -45,5 +45,6 @@
 			%>
 		</table>
 	</main>
+	<a href="addproduct.jsp">ADD Product</a>
 </body>
 </html>

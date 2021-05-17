@@ -1,4 +1,4 @@
-package in.vibin.service;
+package in.vibin.util;
 
 import static org.junit.Assert.*;
 
@@ -11,42 +11,42 @@ public class DisplayTest {
 	@Test
 	// Check the no of products-True
 	public void test1() {
-		Map<Integer, String> product = ProductService.getProducts();
+		Map<Integer, String> product = Util.getProducts();
 		assertEquals(3, product.size());
 	}
 
 	@Test
 	// Check the no of products-False
 	public void test2() {
-		Map<Integer, String> product = ProductService.getProducts();
+		Map<Integer, String> product = Util.getProducts();
 		assertNotEquals(5, product.size());
 	}
 
 	@Test
 	// Check the no of products-True
 	public void test3() {
-		Map<Integer, Double> product = ProductService.getProductsPrice();
-		assertEquals(3, product.size());
+		Map<Integer, Double> productPrice = Util.getProductsPrice();
+		assertEquals(3, productPrice.size());
 	}
 
 	@Test
 	// Check the no of products-False
 	public void test4() {
-		Map<Integer, Double> product = ProductService.getProductsPrice();
-		assertNotEquals(5, product.size());
+		Map<Integer, Double> productPrice = Util.getProductsPrice();
+		assertNotEquals(5, productPrice.size());
 	}
 
 	@Test
 	// Check the no of products-True
 	public void test5() {
-		Map<Integer, Integer> product = ProductService.getProductsQuantity();
-		assertEquals(3, product.size());
+		Map<Integer, Integer> ProductsQuantity = Util.getProductsQuantity();
+		assertEquals(3, ProductsQuantity.size());
 	}
 
 	@Test
 	// Check the no of products-False
 	public void test6() {
-		Map<Integer, Integer> product = ProductService.getProductsQuantity();
-		assertNotEquals(5, product.size());
+		Map<Integer, Integer> ProductsQuantity = Util.getProductsQuantity();
+		assertNotEquals(5, ProductsQuantity.size());
 	}
 }

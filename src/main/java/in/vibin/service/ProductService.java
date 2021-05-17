@@ -1,46 +1,65 @@
 package in.vibin.service;
 
-import java.util.HashMap;
 import java.util.Map;
 
+import in.vibin.util.Util;
+import in.vibin.validator.*;
+
 public class ProductService {
+
 	private ProductService() {
-
 	}
 
-	private static final Map<Integer, String> product = new HashMap<>();
-	static {
-		product.put(31, "milk");
-		product.put(45, "bread");
-		product.put(50, "wheat");
-	}
-	private static final Map<Integer, Double> productPrice = new HashMap<>();
-	static {
-		productPrice.put(31, (double) 15);
-		productPrice.put(45, (double) 30);
-		productPrice.put(50, (double) 40);
-	}
-	private static final Map<Integer, Integer> productQuantity = new HashMap<>();
-	static {
-		productQuantity.put(31, 50);
-		productQuantity.put(45, 50);
-		productQuantity.put(50, 50);
-	}
+//Call the Util package to get the values.
+	static Map<Integer, String> product = Util.getProducts();
+	static Map<Integer, Double> productPrice = Util.getProductsPrice();
+	static Map<Integer, Integer> productQuantity = Util.getProductsQuantity();
 
 	/**
-	 * It will return the products available in the inventory.
+	 * This method is used to add the new product to the list. By getting
+	 * id,name,price,quantity as a input from the admin. The method is in the format
+	 * of addProduct(int id, String name, double price, int quantity). This method
+	 * is process with 3 Hashmaps, Map<Intgr,String>product; =>product(id,nmae)
+	 * Map<Intgr,Double>productPrice; =>produtPrice(id,price)
+	 * Map<Intgr,Integer>productQuantity; =>productQuantity(id,quantity) This method
+	 * return int value, return 0=>If the inputs are invalid. return 1=>If the id
+	 * and name already exist in the list. return 2=>If the id is already exist in
+	 * the list. return 3=>If the Name is already exist in the list.
 	 * 
+	 * @param id
+	 * @param name
+	 * @param price
+	 * @param quantity
 	 * @return
 	 */
-	public static Map<Integer, String> getProducts() {
-		return product;
+	public static int addProduct(int id, String name, double price, int quantity) {
+		boolean isValidid = NumberValidation.checkInteger(id);
+		boolean isValidQuantity = NumberValidation.checkInteger(quantity);
+		boolean isValidName = StringValidation.checkString(name);
+		boolean isValidPrice = NumberValidation.checkDecimal(price);
+		int isAdded = 0;
+		if (isValidid && isValidQuantity && isValidName && isValidPrice) {
+			String trimName = name.toLowerCase().trim();
+			if (product.containsKey(id) && (product.containsValue(trimName))) {
+				isAdded = 1;
+			} else if (product.containsKey(id)) {
+				isAdded = 2;
+			} else if (product.containsValue((trimName))) {
+				isAdded = 3;
+			} else {
+				product.put(id, trimName);
+				productPrice.put(id, price);
+				productQuantity.put(id, quantity);
+				isAdded = 4;
+			}
+		}
+		return isAdded;
 	}
 
-	public static Map<Integer, Double> getProductsPrice() {
-		return productPrice;
-	}
-
-	public static Map<Integer, Integer> getProductsQuantity() {
-		return productQuantity;
+	// test purpose only
+	public static void deleteProduct(int id) {
+		product.remove(id);
+		productPrice.remove(id);
+		productQuantity.remove(id);
 	}
 }
