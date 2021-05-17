@@ -22,7 +22,7 @@ public class IntegerConvertorTest {
 		String number = "10ytjj56y";
 		String errorMessage = null;
 		try {
-			NumberValidation.parseInt(number, "InvalidInput");
+			int number1=NumberValidation.parseInt(number, "InvalidInput");
 		} catch (Exception e) {
 			errorMessage = e.getMessage();
 		}

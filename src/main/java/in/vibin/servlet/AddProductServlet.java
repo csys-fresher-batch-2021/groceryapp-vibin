@@ -32,7 +32,6 @@ public class AddProductServlet extends HttpServlet {
 			boolean isValidName = StringValidation.checkString(name);
 			boolean isValidPrice = NumberValidation.checkDecimal(price);
 			int isAdded = 0;
-			String infoMessage = null;
 			if (isValidID && isValidQuantity && isValidName && isValidPrice) {
 				isAdded = ProductService.addProduct(id, name, price, quantity);
 			}
@@ -49,8 +48,8 @@ public class AddProductServlet extends HttpServlet {
 				response.sendRedirect(excecutionPath + errorMessage);// send the message to the
 																						// addproduct.jsp
 			} else if (isAdded == 4) {
-				infoMessage = "Product added successfully ";
-				response.sendRedirect(excecutionPath + infoMessage);// send the message to the
+				String infoMessage = "Product added successfully ";
+				response.sendRedirect("addproduct.jsp?infoMessage=" + infoMessage);// send the message to the
 																					// addproduct.jsp
 			} else {
 				errorMessage = "Invalid Inputs";
@@ -58,6 +57,7 @@ public class AddProductServlet extends HttpServlet {
 																						// addproduct.jsp
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			errorMessage = e.getMessage();
 			response.sendRedirect(excecutionPath + errorMessage);// send the message to the addproduct.jsp
 		}

@@ -10,12 +10,7 @@ public class DecimalConvertorTest {
 	public void validInputTest() {
 		String number = "10.50";
 		double number1 = 0.0;
-		try {
 			number1 = NumberValidation.parseDouble(number, "InvalidInput");
-		} catch (Exception e) {
-			String errorMessage = e.getMessage();
-			System.out.println(errorMessage);
-		}
 		assertEquals(10.50, number1, 0);
 	}
 

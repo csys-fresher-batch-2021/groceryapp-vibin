@@ -16,8 +16,8 @@
 					<th id="sNo">S.NO</th>
 					<th id="id">ID</th>
 					<th id="productName">Product Name</th>
-					<th id="price">Price(Rs)/Quantity(n)</th>
-					<th id="quantity">Available Quantity(n)</th>
+					<th id="price">Price per Quantity</th>
+					<th id="quantity">Available Quantity</th>
 			</thead>
 			<%
 			int i = 0;
@@ -36,8 +36,8 @@
 					<td><%=serialNo%></td>
 					<td><%=id%></td>
 					<td><%=value%></td>
-					<td>Rs.<%=price%></td>
-					<td><%=quantity%>n</td>
+					<td>Rs. <%=price%></td>
+					<td><%=quantity%></td>
 				</tr>
 			</tbody>
 			<%
