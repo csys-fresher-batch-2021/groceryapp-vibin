@@ -45,6 +45,11 @@
 			%>
 		</table>
 	</main>
+	<%
+				String isAdmin=(String)session.getAttribute("LOGGED_IN_ADMIN");
+				if(isAdmin != null && isAdmin.equals("admin")){
+				%>
 	<a href="addproduct.jsp">ADD Product</a>
+	<%} %>
 </body>
 </html>

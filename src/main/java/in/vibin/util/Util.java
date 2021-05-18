@@ -26,6 +26,11 @@ public class Util {
 		productQuantity.put(45, 50);
 		productQuantity.put(50, 50);
 	}
+	private static final Map<Long, String> adminLogin = new HashMap<>();
+	static{
+		adminLogin.put(9659644868L,"Vibin#321");
+		adminLogin.put(6380998915L, "Kumar@144");
+	}
 
 	/**
 	 * This method is used to get the produts with id and name. It return the
@@ -56,4 +61,15 @@ public class Util {
 	public static Map<Integer, Integer> getProductsQuantity() {
 		return productQuantity;
 	}
+	/**
+	 * This method is used to get the Admin details with mobilenumber and password. It return the
+	 * Map<Long,String>
+	 * 
+	 * @return
+	 */
+
+public static Map<Long, String> getAdminLogin() {
+		return adminLogin;
+	}
+
 }
