@@ -1,8 +1,9 @@
 package in.vibin.service;
 
+import java.sql.SQLException;
 import java.util.Map;
 
-import in.vibin.util.Util;
+import in.vibin.dao.GroceryListDAO;
 import in.vibin.validator.*;
 
 public class ProductService {
@@ -11,9 +12,9 @@ public class ProductService {
 	}
 
 //Call the Util package to get the values.
-	static Map<Integer, String> product = Util.getProducts();
-	static Map<Integer, Double> productPrice = Util.getProductsPrice();
-	static Map<Integer, Integer> productQuantity = Util.getProductsQuantity();
+	static Map<Integer, String> product = GroceryListDAO.getProducts();
+	static Map<Integer, Double> productPrice = GroceryListDAO.getProductsPrice();
+	static Map<Integer, Integer> productQuantity = GroceryListDAO.getProductsQuantity();
 
 	/**
 	 * This method is used to add the new product to the list. By getting
@@ -47,19 +48,27 @@ public class ProductService {
 			} else if (product.containsValue((trimName))) {
 				isAdded = 3;
 			} else {
-				product.put(id, trimName);
-				productPrice.put(id, price);
-				productQuantity.put(id, quantity);
+				try {
+					GroceryListDAO.addProduct(id, trimName, price, quantity);
+				} catch (ClassNotFoundException | SQLException e) {
+					e.printStackTrace();
+				}
 				isAdded = 4;
 			}
 		}
 		return isAdded;
 	}
 
-	// test purpose only
+	/**
+	 * To delete the product.
+	 * 
+	 * @param id
+	 */
 	public static void deleteProduct(int id) {
-		product.remove(id);
-		productPrice.remove(id);
-		productQuantity.remove(id);
+		try {
+			GroceryListDAO.deleteTask(id);
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

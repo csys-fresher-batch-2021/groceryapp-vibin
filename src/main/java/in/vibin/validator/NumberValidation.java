@@ -78,4 +78,14 @@ public class NumberValidation {
 		}
 
 	}
+	public static long parseLong(String number, String errorMessage) {
+		long value = 0;
+		try {
+			value = Long.parseLong(number);
+			return value;
+		} catch (NumberFormatException e) {
+			throw new NumberFormatException(errorMessage);
+		}
+
+	}
 }

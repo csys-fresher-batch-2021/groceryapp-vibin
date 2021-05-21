@@ -1,5 +1,6 @@
-<%@page import="in.vibin.util.*"%>
+<%@page import="in.vibin.dao.*"%>
 <%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,9 +22,9 @@
 			</thead>
 			<%
 			int i = 0;
-			Map<Integer, String> Product =Util.getProducts();
-			Map<Integer, Double> ProductPrice =Util.getProductsPrice();
-			Map<Integer, Integer> ProductQuantity =Util.getProductsQuantity();
+			Map<Integer, String> Product = GroceryListDAO.getProducts();
+			Map<Integer, Double> ProductPrice = GroceryListDAO.getProductsPrice();
+			Map<Integer, Integer> ProductQuantity = GroceryListDAO.getProductsQuantity();
 			for (Integer id : Product.keySet()) {
 				String value = Product.get(id);
 				double price = ProductPrice.get(id);
@@ -45,6 +46,13 @@
 			%>
 		</table>
 	</main>
+	<%
+	String isAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
+	if (isAdmin != null && isAdmin.equals("admin")) {
+	%>
 	<a href="addproduct.jsp">ADD Product</a>
+	<%
+	}
+	%>
 </body>
 </html>
