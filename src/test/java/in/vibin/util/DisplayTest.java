@@ -6,47 +6,49 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import in.vibin.dao.GroceryListDAO;
+
 public class DisplayTest {
 
 	@Test
 	// Check the no of products-True
 	public void test1() {
-		Map<Integer, String> product = Util.getProducts();
-		assertEquals(3, product.size());
+		Map<Integer, String> product = GroceryListDAO.getProducts();
+		assertEquals(1, product.size());
 	}
 
 	@Test
 	// Check the no of products-False
 	public void test2() {
-		Map<Integer, String> product = Util.getProducts();
+		Map<Integer, String> product = GroceryListDAO.getProducts();
 		assertNotEquals(5, product.size());
 	}
 
 	@Test
 	// Check the no of products-True
 	public void test3() {
-		Map<Integer, Double> productPrice = Util.getProductsPrice();
-		assertEquals(3, productPrice.size());
+		Map<Integer, Double> productPrice = GroceryListDAO.getProductsPrice();
+		assertEquals(1, productPrice.size());
 	}
 
 	@Test
 	// Check the no of products-False
 	public void test4() {
-		Map<Integer, Double> productPrice = Util.getProductsPrice();
+		Map<Integer, Double> productPrice = GroceryListDAO.getProductsPrice();
 		assertNotEquals(5, productPrice.size());
 	}
 
 	@Test
 	// Check the no of products-True
 	public void test5() {
-		Map<Integer, Integer> ProductsQuantity = Util.getProductsQuantity();
-		assertEquals(3, ProductsQuantity.size());
+		Map<Integer, Integer> ProductsQuantity = GroceryListDAO.getProductsQuantity();
+		assertEquals(1, ProductsQuantity.size());
 	}
 
 	@Test
 	// Check the no of products-False
 	public void test6() {
-		Map<Integer, Integer> ProductsQuantity = Util.getProductsQuantity();
+		Map<Integer, Integer> ProductsQuantity = GroceryListDAO.getProductsQuantity();
 		assertNotEquals(5, ProductsQuantity.size());
 	}
 }

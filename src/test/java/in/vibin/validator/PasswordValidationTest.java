@@ -1,69 +1,32 @@
 package in.vibin.validator;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-public class PasswordValidationTest {
+class PasswordValidationTest {
 
 	@Test
-	public void testValidPassword() {
-		String password="Vibin#321";
-		boolean isValidPassword=PasswordValidation.checkPassword(password);
+	void testValidPassword() {
+		String password = "Vibin#321";
+		boolean isValidPassword = PasswordValidation.checkPassword(password);
 		assertTrue(isValidPassword);
 	}
+
 	@Test
-	public void testWithoutCaps() {
-		String password="vibin#321";
-		boolean isValidPassword=PasswordValidation.checkPassword(password);
+	void testPasswordIsNull() {
+		String password = null;
+		boolean isValidPassword = PasswordValidation.checkPassword(password);
 		assertFalse(isValidPassword);
 	}
-	@Test
-	public void testWithoutSmall() {
-		String password="VIBIN#321";
-		boolean isValidPassword=PasswordValidation.checkPassword(password);
-		assertFalse(isValidPassword);
-	}
-	@Test
-	public void testWithoutSpecialChar() {
-		String password="VIBIN4321";
-		boolean isValidPassword=PasswordValidation.checkPassword(password);
-		assertFalse(isValidPassword);
-	}
-	@Test
-	public void testWithoutNumber() {
-		String password="VIBIN#vibin";
-		boolean isValidPassword=PasswordValidation.checkPassword(password);
-		assertFalse(isValidPassword);
-	}
-	@Test
-	public void testPasswordLengthLessThanEight() {
-		String password="Vibin#3";
-		boolean isValidPassword=PasswordValidation.checkPassword(password);
-		assertFalse(isValidPassword);
-	}
-	@Test
-	public void testPasswordLengthGreaterThanTwelve() {
-		String password="Vibin#3210987";
-		boolean isValidPassword=PasswordValidation.checkPassword(password);
-		assertFalse(isValidPassword);
-	}
-	@Test
-	public void testPasswordIsNull() {
-		String password=null;
-		boolean isValidPassword=PasswordValidation.checkPassword(password);
-		assertFalse(isValidPassword);
-	}
-	@Test
-	public void testPasswordIsEmptySpace() {
-		String password="   ";
-		boolean isValidPassword=PasswordValidation.checkPassword(password);
-		assertFalse(isValidPassword);
-	}
-	@Test
-	public void testSpacesBetweenPassword() {
-		String password="Vibin#32 1 ";
-		boolean isValidPassword=PasswordValidation.checkPassword(password);
+
+	@ParameterizedTest
+	@ValueSource(strings = { "vibin#321", "VIBIN#321", "Vibin4321", "VIBIN#vibin", "Vibin#3", "Vibin#3210987", "   ",
+			"Vibin#32 1 " })
+	void testinValidPassword(String arg) {
+		boolean isValidPassword = PasswordValidation.checkPassword(arg);
 		assertFalse(isValidPassword);
 	}
 }
