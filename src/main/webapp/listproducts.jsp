@@ -13,12 +13,26 @@
 		<table class="table table-bordered">
 			<caption>List of Products</caption>
 			<thead>
+				<%
+				String isAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
+				%>
 				<tr>
 					<th id="sNo">S.NO</th>
 					<th id="id">ID</th>
 					<th id="productName">Product Name</th>
 					<th id="price">Price per Quantity</th>
 					<th id="quantity">Available Quantity</th>
+					
+					
+				
+					<%
+					if (isAdmin != null && isAdmin.equals("admin")) {
+					%>
+					<th id="delete">Delete</th>
+					<%
+					}
+					%>
+				
 			</thead>
 			<%
 			int i = 0;
@@ -26,7 +40,7 @@
 			Map<Integer, Double> ProductPrice = GroceryListDAO.getProductsPrice();
 			Map<Integer, Integer> ProductQuantity = GroceryListDAO.getProductsQuantity();
 			for (Integer id : Product.keySet()) {
-				String value = Product.get(id);
+				String name = Product.get(id);
 				double price = ProductPrice.get(id);
 				int quantity = ProductQuantity.get(id);
 				i++;
@@ -36,9 +50,19 @@
 				<tr>
 					<td><%=serialNo%></td>
 					<td><%=id%></td>
-					<td><%=value%></td>
+					<td><%=name%></td>
 					<td>Rs. <%=price%></td>
 					<td><%=quantity%></td>
+					
+				
+					
+					<%
+					if (isAdmin != null && isAdmin.equals("admin")) {
+					%>
+					<td><a href="DeleteProductServlet?productID=<%=id%>"
+						class="btn btn-danger">Delete</a> <%
+ }
+ %>
 				</tr>
 			</tbody>
 			<%
@@ -47,7 +71,6 @@
 		</table>
 	</main>
 	<%
-	String isAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
 	if (isAdmin != null && isAdmin.equals("admin")) {
 	%>
 	<a href="addproduct.jsp">ADD Product</a>

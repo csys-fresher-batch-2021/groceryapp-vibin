@@ -1,4 +1,4 @@
-package in.vibin.util;
+package in.vibin.dao;
 
 import static org.junit.Assert.*;
 
@@ -6,28 +6,27 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import in.vibin.dao.GroceryListDAO;
 
 public class DisplayTest {
 
 	@Test
 	// Check the no of products-True
 	public void test1() {
-		Map<Integer, String> product = GroceryListDAO.getProducts();
+		Map<Integer, String> product =  GroceryListDAO.getProducts();
 		assertEquals(1, product.size());
 	}
 
 	@Test
 	// Check the no of products-False
 	public void test2() {
-		Map<Integer, String> product = GroceryListDAO.getProducts();
+		Map<Integer, String> product =  GroceryListDAO.getProducts();
 		assertNotEquals(5, product.size());
 	}
 
 	@Test
 	// Check the no of products-True
 	public void test3() {
-		Map<Integer, Double> productPrice = GroceryListDAO.getProductsPrice();
+		Map<Integer, Double> productPrice =  GroceryListDAO.getProductsPrice();
 		assertEquals(1, productPrice.size());
 	}
 
@@ -48,7 +47,7 @@ public class DisplayTest {
 	@Test
 	// Check the no of products-False
 	public void test6() {
-		Map<Integer, Integer> ProductsQuantity = GroceryListDAO.getProductsQuantity();
+		Map<Integer, Integer> ProductsQuantity =  GroceryListDAO.getProductsQuantity();
 		assertNotEquals(5, ProductsQuantity.size());
 	}
 }
