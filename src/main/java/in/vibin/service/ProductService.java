@@ -50,8 +50,11 @@ public class ProductService {
 			} else {
 				try {
 					GroceryListDAO.addProduct(id, trimName, price, quantity);
+					product.put(id, trimName);
+					productPrice.put(id, price);
+					productQuantity.put(id, quantity);
 				} catch (ClassNotFoundException | SQLException e) {
-					e.printStackTrace();
+					return isAdded;
 				}
 				isAdded = 4;
 			}
@@ -66,7 +69,7 @@ public class ProductService {
 	 */
 	public static void deleteProduct(int id) {
 		try {
-			GroceryListDAO.deleteTask(id);
+			GroceryListDAO.deleteProduct(id);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}

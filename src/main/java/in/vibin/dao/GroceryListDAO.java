@@ -39,11 +39,16 @@ public class GroceryListDAO {
 				productPrice.put(id, price);
 				productQuantity.put(id, quantity);
 			}
+			ConnectionUtil.close(connection);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {
-			pst.close();
-			ConnectionUtil.close(connection);
+			if (pst != null) {
+				pst.close();
+			}
+			if (connection != null) {
+				ConnectionUtil.close(connection);
+			}
 		}
 	}
 
@@ -99,18 +104,23 @@ public class GroceryListDAO {
 			pst.setDouble(3, price);
 			pst.setInt(4, quantity);
 			pst.executeUpdate();
+			ConnectionUtil.close(connection);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {
-			pst.close();
-			ConnectionUtil.close(connection);
+			if (pst != null) {
+				pst.close();
+			}
+			if (connection != null) {
+				ConnectionUtil.close(connection);
+			}
 		}
 	}
 
 	/*
 	 * Delete the product from the database.
 	 */
-	public static void deleteTask(int id) throws ClassNotFoundException, SQLException {
+	public static void deleteProduct(int id) throws ClassNotFoundException, SQLException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
@@ -119,11 +129,19 @@ public class GroceryListDAO {
 			pst = connection.prepareStatement(sql);
 			pst.setInt(1, id);
 			pst.executeUpdate();
+			product.remove(id);
+			productPrice.remove(id);
+			productQuantity.remove(id);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {
-			pst.close();
-			ConnectionUtil.close(connection);
+			if (pst != null) {
+				pst.close();
+			}
+			if (connection != null) {
+				ConnectionUtil.close(connection);
+			}
 		}
 	}
+	
 }

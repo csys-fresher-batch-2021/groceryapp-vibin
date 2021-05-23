@@ -33,12 +33,16 @@ public class AdminListDAO {
 			ResultSet rs = pst.executeQuery();
 			if (rs.next()) {
 				loggedIn = true;
-			}
+			}ConnectionUtil.close(connection);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {
+			if(pst!=null) {
 			pst.close();
+			}
+			if(connection!=null) {
 			ConnectionUtil.close(connection);
+			}
 		}
 		return loggedIn;
 	}
