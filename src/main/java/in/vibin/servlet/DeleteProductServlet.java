@@ -20,7 +20,6 @@ public class DeleteProductServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 		try {
 			int id = NumberValidation.parseInt(request.getParameter("productID"), "Invalid input");
 			ProductService.deleteProduct(id);
