@@ -20,7 +20,7 @@ public static double orderProduct(int id,int orderedQuantity) {
 		int remainingQuantity=availableQuantity-orderedQuantity;
 		price1=price*orderedQuantity;
 		try {
-			GroceryListDAO.orderProduct(id, remainingQuantity);
+			GroceryListDAO.updateQuantity(id, remainingQuantity);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
@@ -36,7 +36,7 @@ public static void addQuantity(int id,int quantity) {
 	if(isValidQuantity) {
 		int updatedQuantity=availableQuantity+quantity;
 		try {
-			GroceryListDAO.addQuantity(id, updatedQuantity);
+			GroceryListDAO.updateQuantity(id, updatedQuantity);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}

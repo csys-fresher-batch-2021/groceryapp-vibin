@@ -22,7 +22,6 @@ public class OrderProductServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("orderID");
 		String name = (String) session.getAttribute("orderName");

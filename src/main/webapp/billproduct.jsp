@@ -19,13 +19,13 @@
 	<form >
 	<h3>Bill</h3>
 	<label>Product name</label>
-	<input id="ordername" name="ordername" value=<%=name %> readonly><br>
+	<input  value=<%=name %> readonly><br>
 	<label>Product price</label>
-	<input id="orderprice" name="orderprice" value=<%=price %> readonly><br>
+	<input  value=<%=price %> readonly><br>
 	<label>Ordered quantity</label>
-	<input id="orderquantity" name="orderquantity" value=<%=quantity %> readonly><br>
+	<input  value=<%=quantity %> readonly><br>
 	<label>Total amount</label>
-	<input id="amount" name="amount" value=<%=amount %> readonly><br>
+	<input  value=<%=amount %> readonly><br>
 	<p>!!!Thank you for purchase!!!<br>
 	-----Visit Again-----</p>
 	</form>
