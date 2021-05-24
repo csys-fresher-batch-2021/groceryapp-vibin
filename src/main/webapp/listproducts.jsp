@@ -22,6 +22,10 @@
 					<th id="productName">Product Name</th>
 					<th id="price">Price per Quantity</th>
 					<th id="quantity">Available Quantity</th>
+					<%if(isAdmin ==null){
+				%>
+					<th id="buy">Buy</th>
+				<%} %>
 					
 					
 				
@@ -54,7 +58,12 @@
 					<td>Rs. <%=price%></td>
 					<td><%=quantity%></td>
 					
-				
+				<%if(isAdmin ==null){
+				%>
+					<td><a
+						href="BuyProductServlet?id=<%=id %>&name=<%=name%>&price=<%=price%>&quantity=<%=quantity%>"
+						class="btn btn-info">Buy</a></td>
+					<%} %>
 					
 					<%
 					if (isAdmin != null && isAdmin.equals("admin")) {

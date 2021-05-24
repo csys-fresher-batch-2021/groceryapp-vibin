@@ -143,5 +143,52 @@ public class GroceryListDAO {
 			}
 		}
 	}
+	public static void orderProduct(int id,int quantity) throws ClassNotFoundException,SQLException {
+		Connection connection = null;
+		PreparedStatement pst = null;
+			try {
+				connection = ConnectionUtil.getConnection();
+				String sql = "UPDATE grocery_list SET quantity =?WHERE id =?";
+				pst = connection.prepareStatement(sql);
+				pst.setInt(1, quantity);
+				pst.setInt(2, id);
+				pst.executeUpdate();
+				productQuantity.put(id,quantity);
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
+			 finally {
+					if (pst != null) {
+						pst.close();
+					}
+					if (connection != null) {
+						ConnectionUtil.close(connection);
+					}
+				}
+	}
+	//test purpose only
+	public static void addQuantity(int id,int quantity) throws ClassNotFoundException,SQLException {
+		Connection connection = null;
+		PreparedStatement pst = null;
+			try {
+				connection = ConnectionUtil.getConnection();
+				String sql = "UPDATE grocery_list SET quantity =?WHERE id =?";
+				pst = connection.prepareStatement(sql);
+				pst.setInt(1, quantity);
+				pst.setInt(2, id);
+				pst.executeUpdate();
+				productQuantity.put(id,quantity);
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
+			 finally {
+					if (pst != null) {
+						pst.close();
+					}
+					if (connection != null) {
+						ConnectionUtil.close(connection);
+					}
+				}
+	}
 	
 }
