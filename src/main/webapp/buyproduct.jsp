@@ -1,6 +1,7 @@
+<%@page import="in.vibin.service.ProductService"%>
 <%@page import="in.vibin.dao.*"%>
-<%@page import="java.util.Map"%>
-<%@page import="java.util.HashMap"%>
+<%@page import="java.util.List"%>
+<%@page import="in.vibin.model.*"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,9 +23,16 @@
 					<th id="productName">Product Name</th>
 					<th id="price">Price per Quantity</th>
 					<th id="quantity">Available Quantity</th>
-					
-					
-				
+					<%
+					if (isAdmin == null) {
+					%>
+					<th id="buy">Buy</th>
+					<%
+					}
+					%>
+
+
+
 					<%
 					if (isAdmin != null && isAdmin.equals("admin")) {
 					%>
@@ -36,13 +44,12 @@
 			</thead>
 			<%
 			int i = 0;
-			Map<Integer, String> Product = GroceryListDAO.getProducts();
-			Map<Integer, Double> ProductPrice = GroceryListDAO.getProductsPrice();
-			Map<Integer, Integer> ProductQuantity = GroceryListDAO.getProductsQuantity();
-			for (Integer id : Product.keySet()) {
-				String name = Product.get(id);
-				double price = ProductPrice.get(id);
-				int quantity = ProductQuantity.get(id);
+			List<Product> productList = ProductService.getProduct();
+			for (Product product : productList) {
+				int id = product.getID();
+				String name = product.getName();
+				double price = product.getPrice();
+				int quantity = product.getQuantity();
 				i++;
 				int serialNo = i;
 			%>
@@ -53,9 +60,17 @@
 					<td><%=name%></td>
 					<td>Rs. <%=price%></td>
 					<td><%=quantity%></td>
-					
-				
-					
+
+					<%
+					if (isAdmin == null) {
+					%>
+					<td><a
+						href="BuyProductServlet?id=<%=id%>&name=<%=name%>&price=<%=price%>&quantity=<%=quantity%>"
+						class="btn btn-info">Buy</a></td>
+					<%
+					}
+					%>
+
 					<%
 					if (isAdmin != null && isAdmin.equals("admin")) {
 					%>
@@ -73,7 +88,7 @@
 	<%
 	if (isAdmin != null && isAdmin.equals("admin")) {
 	%>
-	<a href="addproduct.jsp">ADD Product</a>
+	<a href="addproduct.jsp" class="btn btn-info">ADD Product</a>
 	<%
 	}
 	%>

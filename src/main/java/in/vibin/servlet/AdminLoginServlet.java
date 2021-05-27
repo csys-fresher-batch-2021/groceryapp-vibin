@@ -18,26 +18,28 @@ import in.vibin.validator.PasswordValidation;
 @WebServlet("/AdminLoginServlet")
 public class AdminLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	@Override
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String mobileNumber=request.getParameter("mobileNumber").trim();
-		String password=request.getParameter("password").trim();
-		long mobileNumberLong= NumberValidation.parseLong(mobileNumber,"Invalid mobile number");
-		boolean isValidPassword=PasswordValidation.checkPassword(password);
-		boolean isValidMobileNumber=MobileNumberValidation.checkMobileNumber(mobileNumberLong);
-		boolean isAdmin=false;
-		if(isValidPassword && isValidMobileNumber) {
-			isAdmin=AdminLoginService.admin(mobileNumberLong, password);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String mobileNumber = request.getParameter("mobileNumber").trim();
+		String password = request.getParameter("password").trim();
+		long mobileNumberLong = NumberValidation.parseLong(mobileNumber, "Invalid mobile number");
+		boolean isValidPassword = PasswordValidation.checkPassword(password);
+		boolean isValidMobileNumber = MobileNumberValidation.checkMobileNumber(mobileNumberLong);
+		boolean isAdmin = false;
+		if (isValidPassword && isValidMobileNumber) {
+			isAdmin = AdminLoginService.admin(mobileNumberLong, password);
 		}
-		if(isAdmin) {
+		if (isAdmin) {
 			HttpSession session = request.getSession();
 			session.setAttribute("LOGGED_IN_ADMIN", "admin");
 			response.sendRedirect("index.jsp?infoMessage=" + "Admin Login");
-		}
-		else {
+		} else {
 			response.sendRedirect("adminlogin.jsp?errorMessage=" + "Invalid Inputs");
 		}
 	}

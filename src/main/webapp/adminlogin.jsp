@@ -12,11 +12,13 @@
 		<form action="AdminLoginServlet" method="post">
 			<h3>Admin Login</h3>
 			<label>Mobilenumber</label> <input type="tel" name="mobileNumber"
-				id="mno" placeholder="Enter the mobile number" pattern="[6-9][0-9]{9}" autofocus required>
-			<br> <label>Password</label> <input type="password"
-				name="password" id="password" placeholder="Enter the password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
+				id="mno" placeholder="Enter the mobile number"
+				pattern="[6-9][0-9]{9}" autofocus required> <br> <label>Password</label>
+			<input type="password" name="password" id="password"
+				placeholder="Enter the password"
+				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
 				required> <br>
-			<button type="submit">LOGIN</button>
+			<button type="submit">ADMIN LOGIN</button>
 			<br>
 			<%
 			String errorMessage = request.getParameter("errorMessage");
