@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import org.junit.jupiter.api.Test;
 
+import in.vibin.exception.ProuctExistException;
 import in.vibin.model.Product;
 
 class DeleteProductTest {
@@ -20,10 +21,9 @@ class DeleteProductTest {
 		product.setName("wheat");
 		product.setPrice(12);
 		product.setQuantity(35);
-	
 		try {
 			ProductService.addProduct(product);
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (ClassNotFoundException | SQLException | ProuctExistException e) {
 			e.printStackTrace();
 		}
 	}
