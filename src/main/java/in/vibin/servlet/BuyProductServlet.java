@@ -26,7 +26,6 @@ public class BuyProductServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String price = request.getParameter("price");
 		String quantity = request.getParameter("quantity");
-
 		HttpSession session = request.getSession();
 
 		session.setAttribute("orderID", id);

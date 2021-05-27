@@ -3,7 +3,6 @@ package in.vibin.service;
 import java.sql.SQLException;
 import in.vibin.dao.GroceryListDAO;
 import in.vibin.model.Product;
-import in.vibin.validator.NumberValidation;
 
 public class UserService {
 	private UserService() {
@@ -27,19 +26,4 @@ public class UserService {
 		return price1;
 	}
 
-//test purpose only
-	public static void addQuantity(Product product) {
-		int id = product.getID();
-		int availableQuantity = product.getQuantity();
-		int orderedQuantity = product.getorderedQuantity();
-		boolean isValidQuantity = NumberValidation.checkInteger(orderedQuantity);
-		if (isValidQuantity) {
-			int updatedQuantity = availableQuantity + orderedQuantity;
-			try {
-				GroceryListDAO.updateQuantity(id, updatedQuantity);
-			} catch (ClassNotFoundException | SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
 }
