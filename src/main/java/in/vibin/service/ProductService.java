@@ -6,6 +6,7 @@ import java.util.List;
 import in.vibin.dao.GroceryListDAO;
 import in.vibin.exception.ProuctExistException;
 import in.vibin.model.Product;
+import in.vibin.validator.NumberValidation;
 
 public class ProductService {
 	private ProductService() {
@@ -79,5 +80,19 @@ public class ProductService {
 			e.printStackTrace();
 		}
 	}
-
+	
+		public static void addQuantity(Product product) {
+			int id = product.getID();
+			int availableQuantity = product.getQuantity();
+			int addedQuantity = product.getorderedQuantity();
+			boolean isValidQuantity = NumberValidation.checkInteger(addedQuantity);
+			if (isValidQuantity) {
+				int updatedQuantity = availableQuantity + addedQuantity;
+				try {
+					GroceryListDAO.updateQuantity(id, updatedQuantity);
+				} catch (ClassNotFoundException | SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 }

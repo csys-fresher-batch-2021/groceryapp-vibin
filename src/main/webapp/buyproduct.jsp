@@ -33,6 +33,7 @@
 					<%
 					if (isAdmin != null && isAdmin.equals("admin")) {
 					%>
+					<th id="addquantity">Add quantity</th>
 					<th id="delete">Delete</th>
 					<%
 					}
@@ -71,6 +72,8 @@
 					<%
 					if (isAdmin != null && isAdmin.equals("admin")) {
 					%>
+					<td><a href="AddQuantityServlet?productID=<%=id%>&availablequantity=<%=quantity%>"
+						class="btn btn-info">Add quantity</a>
 					<td><a href="DeleteProductServlet?productID=<%=id%>"
 						class="btn btn-danger">Delete</a> <%
  }

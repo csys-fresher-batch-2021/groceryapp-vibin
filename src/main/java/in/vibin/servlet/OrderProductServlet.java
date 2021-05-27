@@ -30,7 +30,7 @@ public class OrderProductServlet extends HttpServlet {
 		String price = (String) session.getAttribute("orderPrice");
 		String availableQuantity = (String) session.getAttribute("availableQuantity");
 		String orderedQuantity = request.getParameter("orderedquantity");
-
+		
 		int idInt = NumberValidation.parseInt(id, "Invalid ID");
 		int orderedQuantityInt = NumberValidation.parseInt(orderedQuantity, "Invalid Quantity");
 		double priceDouble = NumberValidation.parseDouble(price, "Invalid price");
@@ -49,6 +49,11 @@ public class OrderProductServlet extends HttpServlet {
 			orderProduct.setOrderedQuantity(orderedQuantityInt);
 			orderProduct.setAmount(amount);
 			OrderService.addOrderProduct(orderProduct);
+			
+			session.removeAttribute("orderID"); 
+			session.removeAttribute("orderName");
+			session.removeAttribute("orderPrice");
+			session.removeAttribute("availableQuantity");
 			response.sendRedirect("orderproduct.jsp");
 		}
 
