@@ -18,10 +18,10 @@
 			<thead>
 				<tr>
 
-					<th>ID</th>
-					<th>Name</th>
-					<th>Price per Quantity</th>
-					<th>Available Quantity</th>
+					<th id="id">ID</th>
+					<th id="name">Name</th>
+					<th id="price">Price per Quantity</th>
+					<th id="quantity">Available Quantity</th>
 
 				</tr>
 			</thead>
