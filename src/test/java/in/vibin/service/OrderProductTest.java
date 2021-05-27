@@ -4,17 +4,27 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import in.vibin.model.Product;
+
 class OrderProductTest {
 
 
 
 	@Test
 	void test() {
-		int id=50;
-		int quantity=2;
-		double amount=UserService.orderProduct(id,quantity);
-		assertEquals(100,amount);
-		UserService.addQuantity(id, quantity);
+		Product orderedProduct=new Product();
+		orderedProduct.setID(50);
+		orderedProduct.setName("wheat");
+		orderedProduct.setOrderedQuantity(2);
+		orderedProduct.setQuantity(35);
+		orderedProduct.setPrice(12);
+		double amount=UserService.orderProduct(orderedProduct);
+		assertEquals(24,amount);
+		Product product=new Product();
+		product.setID(50);
+		product.setQuantity(33);
+		product.setOrderedQuantity(2);
+		UserService.addQuantity(product);
 	}
 
 }

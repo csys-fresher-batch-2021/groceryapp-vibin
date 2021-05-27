@@ -1,20 +1,27 @@
 package in.vibin.service;
 
 import java.sql.SQLException;
-import java.util.Map;
+import java.util.List;
 
 import in.vibin.dao.GroceryListDAO;
-import in.vibin.validator.*;
+import in.vibin.exception.ProuctExistException;
+import in.vibin.model.Product;
 
 public class ProductService {
-
 	private ProductService() {
 	}
 
-//Call the Util package to get the values.
-	static Map<Integer, String> product = GroceryListDAO.getProducts();
-	static Map<Integer, Double> productPrice = GroceryListDAO.getProductsPrice();
-	static Map<Integer, Integer> productQuantity = GroceryListDAO.getProductsQuantity();
+	public static List<Product> getProduct() {
+
+		List<Product> productList = null;
+
+		try {
+			productList = GroceryListDAO.getProduct();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return productList;
+	}
 
 	/**
 	 * This method is used to add the new product to the list. By getting
@@ -32,34 +39,32 @@ public class ProductService {
 	 * @param price
 	 * @param quantity
 	 * @return
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
+	 * @throws ProuctExistException
 	 */
-	public static int addProduct(int id, String name, double price, int quantity) {
-		boolean isValidid = NumberValidation.checkInteger(id);
-		boolean isValidQuantity = NumberValidation.checkInteger(quantity);
-		boolean isValidName = StringValidation.checkString(name);
-		boolean isValidPrice = NumberValidation.checkDecimal(price);
-		int isAdded = 0;
-		if (isValidid && isValidQuantity && isValidName && isValidPrice) {
-			String trimName = name.toLowerCase().trim();
-			if (product.containsKey(id) && (product.containsValue(trimName))) {
-				isAdded = 1;
-			} else if (product.containsKey(id)) {
-				isAdded = 2;
-			} else if (product.containsValue((trimName))) {
-				isAdded = 3;
-			} else {
-				try {
-					GroceryListDAO.addProduct(id, trimName, price, quantity);
-					product.put(id, trimName);
-					productPrice.put(id, price);
-					productQuantity.put(id, quantity);
-				} catch (ClassNotFoundException | SQLException e) {
-					return isAdded;
-				}
-				isAdded = 4;
+	public static void addProduct(Product product) throws ClassNotFoundException, SQLException, ProuctExistException {
+		try {
+			isProductAvailable(product);
+			GroceryListDAO.addProduct(product);
+		} catch (Exception e) {
+			throw new ProuctExistException(e.getMessage());
+		}
+	}
+
+	public static void isProductAvailable(Product product) throws ProuctExistException {
+		List<Product> productList = getProduct();
+		String trimName = product.getName().toLowerCase().trim();
+
+		for (Product products : productList) {
+			if (products.getID() == product.getID() && products.getName().equals(trimName)) {
+				throw new ProuctExistException("ID and Name already exist");
+			} else if (products.getID() == product.getID()) {
+				throw new ProuctExistException("ID already exist");
+			} else if (products.getName().equals(trimName)) {
+				throw new ProuctExistException("Name already exist");
 			}
 		}
-		return isAdded;
 	}
 
 	/**
@@ -74,4 +79,5 @@ public class ProductService {
 			e.printStackTrace();
 		}
 	}
+
 }

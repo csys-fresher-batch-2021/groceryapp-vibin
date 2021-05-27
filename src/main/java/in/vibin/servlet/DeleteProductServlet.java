@@ -6,7 +6,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import in.vibin.service.ProductService;
 import in.vibin.validator.NumberValidation;
 
@@ -23,7 +22,7 @@ public class DeleteProductServlet extends HttpServlet {
 		try {
 			int id = NumberValidation.parseInt(request.getParameter("productID"), "Invalid input");
 			ProductService.deleteProduct(id);
-			response.sendRedirect("listproducts.jsp?infoMessage=" + "Deleted successfully");
+			response.sendRedirect("buyproduct.jsp?infoMessage=" + "Deleted successfully");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
