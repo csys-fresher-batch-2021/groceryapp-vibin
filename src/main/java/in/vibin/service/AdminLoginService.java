@@ -18,7 +18,7 @@ public class AdminLoginService {
 	 * @return
 	 */
 	public static boolean admin(long mobileNumber, String password) {
-		boolean isValidMobileNumber = MobileNumberValidation.checkMobileNumber(mobileNumber);// To check the //
+		boolean isValidMobileNumber = MobileNumberValidation.checkMobileNumber(mobileNumber);// To check the // //
 																								// mobilenumber format
 		boolean isValidPassword = PasswordValidation.checkPassword(password);// To check the password format
 		boolean isAdmin = false;

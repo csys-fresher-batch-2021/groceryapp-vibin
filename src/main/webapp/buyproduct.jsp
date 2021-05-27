@@ -30,9 +30,6 @@
 					<%
 					}
 					%>
-
-
-
 					<%
 					if (isAdmin != null && isAdmin.equals("admin")) {
 					%>

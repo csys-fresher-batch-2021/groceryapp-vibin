@@ -18,7 +18,7 @@
 				placeholder="Enter the password"
 				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
 				required> <br>
-			<button type="submit">ADMIN LOGIN</button>
+			<button type="submit" class="btn btn-info">ADMIN LOGIN</button>
 			<br>
 			<%
 			String errorMessage = request.getParameter("errorMessage");

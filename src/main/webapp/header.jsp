@@ -16,8 +16,14 @@
 		%>
 		<div class="collapse navbar-collapse" id="collapsibleNavId">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li class="nav-item active"><a class="nav-link"
-					href="displayproduct.jsp">Display Products<span class="sr-only">(current)</span></a></li>
+				<li class="nav-item active">
+				<%if(isAdmin=="admin") {%>
+				<a class="nav-link"href="displayproduct.jsp">Overview<span class="sr-only">(current)</span></a>
+				<%} %>
+				<%if(isAdmin==null) {%>
+				<a class="nav-link"href="displayproduct.jsp">Display Product<span class="sr-only">(current)</span></a>
+				<%} %>
+				</li>
 				<%
 				if (isAdmin == null) {
 				%>

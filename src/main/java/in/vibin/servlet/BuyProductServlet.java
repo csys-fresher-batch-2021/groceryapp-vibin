@@ -34,7 +34,7 @@ public class BuyProductServlet extends HttpServlet {
 		session.setAttribute("orderPrice", price);
 		session.setAttribute("availableQuantity", quantity);
 
-		response.sendRedirect("orderproduct.jsp");
+		response.sendRedirect("orderquantity.jsp");
 	}
 
 }
