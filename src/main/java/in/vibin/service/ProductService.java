@@ -81,6 +81,8 @@ public class ProductService {
 		}
 	}
 	
+	
+	
 		public static void addQuantity(Product product) {
 			int id = product.getID();
 			int availableQuantity = product.getQuantity();

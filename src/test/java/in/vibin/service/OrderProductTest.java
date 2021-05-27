@@ -24,7 +24,7 @@ class OrderProductTest {
 		product.setID(50);
 		product.setQuantity(33);
 		product.setOrderedQuantity(2);
-		UserService.addQuantity(product);
+		ProductService.addQuantity(product);
 	}
 
 }
