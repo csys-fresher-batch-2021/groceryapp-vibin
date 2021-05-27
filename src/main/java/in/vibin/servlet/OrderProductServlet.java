@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import in.vibin.model.OrderProduct;
 import in.vibin.model.Product;
+import in.vibin.service.OrderService;
 import in.vibin.service.UserService;
 import in.vibin.validator.NumberValidation;
 
@@ -28,6 +30,7 @@ public class OrderProductServlet extends HttpServlet {
 		String price = (String) session.getAttribute("orderPrice");
 		String availableQuantity = (String) session.getAttribute("availableQuantity");
 		String orderedQuantity = request.getParameter("orderedquantity");
+
 		int idInt = NumberValidation.parseInt(id, "Invalid ID");
 		int orderedQuantityInt = NumberValidation.parseInt(orderedQuantity, "Invalid Quantity");
 		double priceDouble = NumberValidation.parseDouble(price, "Invalid price");
@@ -40,8 +43,13 @@ public class OrderProductServlet extends HttpServlet {
 			product.setPrice(priceDouble);
 			product.setQuantity(availableQuantityInt);
 			double amount = UserService.orderProduct(product);
-			response.sendRedirect("billproduct.jsp?id=" + id + "&name=" + name + "&price=" + price + "&orderquantity="
-					+ orderedQuantity + "&amount=" + amount);
+			OrderProduct orderProduct = new OrderProduct();
+			orderProduct.setName(name);
+			orderProduct.setPrice(priceDouble);
+			orderProduct.setOrderedQuantity(orderedQuantityInt);
+			orderProduct.setAmount(amount);
+			OrderService.addOrderProduct(orderProduct);
+			response.sendRedirect("orderproduct.jsp");
 		}
 
 	}
