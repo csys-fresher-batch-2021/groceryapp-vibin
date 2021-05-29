@@ -16,8 +16,10 @@
 			out.println("<font color='green'> USER Login </font>");
 		}
 		%>
-		<h3>Welcome To Grocery Management App</h3>
-
+		<h3>Welcome To Grocery Management App</h3><br>
+		<p>REFERENCE</p><br>
+		<p>Admin login<br>MobileNumber=6380998915<br>Password=Kumar@123</p><br>
+		<p>User login<br>MobileNumber=9659644868<br>Password=Vibin#321</p>
 	</main>
 </body>
 </html>

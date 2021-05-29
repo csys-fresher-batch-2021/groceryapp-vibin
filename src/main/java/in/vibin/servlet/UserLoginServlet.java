@@ -47,7 +47,7 @@ public class UserLoginServlet extends HttpServlet {
 			session.setAttribute("LOGGED_IN_USER", "user");
 			response.sendRedirect("index.jsp?infoMessage=" + "User Login");
 		} else {
-			response.sendRedirect("adminlogin.jsp?errorMessage=" + "Invalid Inputs");
+			response.sendRedirect("userlogin.jsp?errorMessage=" + "Invalid Inputs");
 		}
 	}
 	}

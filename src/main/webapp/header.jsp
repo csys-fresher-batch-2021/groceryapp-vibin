@@ -55,6 +55,11 @@
 				}
 				%>
 				<%
+				if (isUser==null && isAdmin==null) {
+				%>
+				<li class="nav-item active"><a class="nav-link" href="registeruser.jsp">Register User</a></li>
+				<%} %>
+				<%
 				if (isAdmin=="admin") {
 				%>
 				<li class="nav-item active"><a class="nav-link" href="AdminLogoutServlet">Logout=></a></li>
