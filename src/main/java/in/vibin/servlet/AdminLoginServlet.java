@@ -38,6 +38,7 @@ public class AdminLoginServlet extends HttpServlet {
 		if (isAdmin) {
 			HttpSession session = request.getSession();
 			session.setAttribute("LOGGED_IN_ADMIN", "admin");
+			
 			response.sendRedirect("index.jsp?infoMessage=" + "Admin Login");
 		} else {
 			response.sendRedirect("adminlogin.jsp?errorMessage=" + "Invalid Inputs");
