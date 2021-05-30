@@ -25,5 +25,6 @@ public class AdminLogoutServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.removeAttribute("LOGGED_IN_ADMIN");
 		response.sendRedirect("index.jsp");
+		
 	}
 }

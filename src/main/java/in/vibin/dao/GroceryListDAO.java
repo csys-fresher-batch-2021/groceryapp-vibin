@@ -123,4 +123,25 @@ public class GroceryListDAO {
 			}
 		}
 	}
+	public static void addRemovedProductQuantity(String name,int quantity) throws SQLException {
+		Connection connection = null;
+		PreparedStatement pst = null;
+		try {
+			connection = ConnectionUtil.getConnection();
+			String sql = "UPDATE grocery_list SET quantity=quantity+? WHERE name =?";
+			pst = connection.prepareStatement(sql);
+			pst.setInt(1, quantity);
+			pst.setString(2, name);
+			pst.executeUpdate();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (pst != null) {
+				pst.close();
+			}
+			if (connection != null) {
+				ConnectionUtil.close(connection);
+			}
+		}
+	}
 }

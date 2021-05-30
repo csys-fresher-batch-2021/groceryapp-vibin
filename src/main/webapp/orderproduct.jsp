@@ -20,6 +20,7 @@
 					<th id="price">Price per Quantity</th>
 					<th id="orderedquantity">Ordered Quantity</th>
 					<th id="amount">Amount</th>
+					<th id="amount">Remove Order</th>
 			</thead>
 			<%
 			int i = 0;
@@ -30,6 +31,7 @@
 				double price = orderProduct.getPrice();
 				int quantity = orderProduct.getOrderedQuantity();
 				double amount = orderProduct.getAmount();
+				int id=orderProduct.getID();
 				totalAmount=totalAmount+amount;
 				i++;
 				int serialNo = i;
@@ -42,6 +44,9 @@
 					<td>Rs. <%=price%></td>
 					<td><%=quantity%></td>
 					<td>Rs. <%=amount%></td>
+					<td><a
+						href="RemoveOrderProductServlet?name=<%=name %>&id=<%=id%>&price=<%=price%>&quantity=<%=quantity%>"
+						class="btn btn-danger">CancelOrder</a></td>
 					<%} %>
 				</tr>
 			</tbody>

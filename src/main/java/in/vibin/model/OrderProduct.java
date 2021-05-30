@@ -5,7 +5,7 @@ public class OrderProduct {
 	private double price;
 	private int orderedQuantity;
 	private double amount;
-
+	private int id;
 	public OrderProduct() {
 		super();
 	}
@@ -21,6 +21,9 @@ public class OrderProduct {
 	// getter
 	public String getName() {
 		return name;
+	}
+	public int getID() {
+		return id;
 	}
 
 	public double getPrice() {
@@ -40,6 +43,9 @@ public class OrderProduct {
 		this.name = name;
 	}
 
+	public void setID(int id) {
+		this.id = id;
+	}
 	public void setPrice(double price) {
 		this.price = price;
 	}

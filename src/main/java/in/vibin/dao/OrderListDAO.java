@@ -32,6 +32,7 @@ public class OrderListDAO {
 				orderProduct.setPrice(rs.getDouble("price_per_quantity"));
 				orderProduct.setOrderedQuantity(rs.getInt("ordered_quantity"));
 				orderProduct.setAmount(rs.getDouble("amount"));
+				orderProduct.setID(rs.getInt("ordered_id"));
 				orderProductList.add(orderProduct);
 			}
 			ConnectionUtil.close(connection);
@@ -80,14 +81,14 @@ public class OrderListDAO {
 	/*
 	 * Delete the product from the database.
 	 */
-	public static void deleteOrderedProduct(String name) throws ClassNotFoundException, SQLException {
+	public static void deleteOrderedProduct(int id) throws ClassNotFoundException, SQLException {
 		Connection connection = null;
 		PreparedStatement pst = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "DELETE FROM order_list WHERE name=?";
+			String sql = "DELETE FROM order_list WHERE ordered_id=?";
 			pst = connection.prepareStatement(sql);
-			pst.setString(1, name);
+			pst.setInt(1, id);
 			pst.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
