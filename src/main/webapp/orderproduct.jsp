@@ -24,18 +24,21 @@
 			</thead>
 			<%
 			int i = 0;
-			double totalAmount=0;
+			double totalAmount = 0;
+			String name = null;
+			double price = 0;
+			int quantity = 0;
+			double amount = 0;
 			List<OrderProduct> orderProductList = OrderService.getProduct();
 			for (OrderProduct orderProduct : orderProductList) {
-				String name = orderProduct.getName();
-				double price = orderProduct.getPrice();
-				int quantity = orderProduct.getOrderedQuantity();
-				double amount = orderProduct.getAmount();
-				int id=orderProduct.getID();
-				totalAmount=totalAmount+amount;
+				name = orderProduct.getName();
+				price = orderProduct.getPrice();
+				quantity = orderProduct.getOrderedQuantity();
+				amount = orderProduct.getAmount();
+				int id = orderProduct.getID();
+				totalAmount = totalAmount + amount;
 				i++;
 				int serialNo = i;
-				
 			%>
 			<tbody>
 				<tr>
@@ -45,17 +48,19 @@
 					<td><%=quantity%></td>
 					<td>Rs. <%=amount%></td>
 					<td><a
-						href="RemoveOrderProductServlet?name=<%=name %>&id=<%=id%>&price=<%=price%>&quantity=<%=quantity%>"
+						href="RemoveOrderProductServlet?name=<%=name%>&id=<%=id%>&price=<%=price%>&quantity=<%=quantity%>"
 						class="btn btn-danger">CancelOrder</a></td>
-					<%} %>
+					<%
+					}
+					%>
 				</tr>
 			</tbody>
-			
+
 		</table>
-		<label>Total Amount(Rs.)</label>
-		<input value=<%=totalAmount %>>
-		<a href="buyproduct.jsp" class="btn btn-info">OrderProduct</a>
-		<a href="billproduct.jsp" class="btn btn-info">Proceed for Bill</a>
+		<label>Total Amount(Rs.)</label> <input value=<%=totalAmount%>>
+		<a href="buyproduct.jsp" class="btn btn-info">OrderProduct</a> <a
+			href="SellingHistoryServlet?productname=<%=name%>&priceperquantity=<%=price%>&orderedquantity=<%=quantity%>&amount=<%=amount%>"
+			class="btn btn-info">Proceed for Bill</a>
 	</main>
 </body>
 </html>

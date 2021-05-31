@@ -15,14 +15,13 @@ public class ConnectionUtil {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
+	private static String driverClass = System.getenv("spring.datasource.driver-class-name");
+	private static String url = System.getenv("spring.datasource.url");
+	private static String username = System.getenv("spring.datasource.username");
+	private static String password = System.getenv("spring.datasource.password");
+
 	public static Connection getConnection() throws ClassNotFoundException, SQLException {
-		String driverClass = "org.postgresql.Driver";
-		String url = "jdbc:postgresql://localhost/grocery_db";
-		String username = "postgres";
-		String password = "root";
-		// Step 1: Load the jdbc driver in memory
 		Class.forName(driverClass);
-		// Step 2: Get the connection
 		return DriverManager.getConnection(url, username, password);
 	}
 
