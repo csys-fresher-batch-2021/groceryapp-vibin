@@ -19,21 +19,23 @@ import in.vibin.validator.PasswordValidation;
 @WebServlet("/UserLoginServlet")
 public class UserLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserLoginServlet() {
-        super();
-
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-    @Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String mobileNumber = request.getParameter("mobileNumber").trim();
+	public UserLoginServlet() {
+		super();
+
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String mobileNumber = request.getParameter("mobileNumber").trim();
 		String password = request.getParameter("password").trim();
 		long mobileNumberLong = NumberValidation.parseLong(mobileNumber, "Invalid mobile number");
 		boolean isValidPassword = PasswordValidation.checkPassword(password);
@@ -45,10 +47,10 @@ public class UserLoginServlet extends HttpServlet {
 		if (isUser) {
 			HttpSession session = request.getSession();
 			session.setAttribute("LOGGED_IN_USER", "user");
+			session.setAttribute("userMobileNumber", mobileNumberLong);
 			response.sendRedirect("index.jsp?infoMessage=" + "User Login");
 		} else {
 			response.sendRedirect("userlogin.jsp?errorMessage=" + "Invalid Inputs");
 		}
 	}
-	}
-
+}

@@ -110,7 +110,7 @@ public class OrderListDAO {
 		PreparedStatement pst = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "DELETE FROM order_list";
+			String sql = "TRUNCATE TABLE order_list";
 			pst = connection.prepareStatement(sql);
 			pst.executeQuery();
 			ConnectionUtil.close(connection);

@@ -14,26 +14,27 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/UserLogoutServlet")
 public class UserLogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserLogoutServlet() {
-        super();
-       
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-    @Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		session.removeAttribute("LOGGED_IN_USER");
-		response.sendRedirect("index.jsp");
-		
+	public UserLogoutServlet() {
+		super();
+
 	}
 
-	
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		session.removeAttribute("LOGGED_IN_USER");
+		session.removeAttribute("userMobileNumber");
+		response.sendRedirect("index.jsp");
+
+	}
 
 }

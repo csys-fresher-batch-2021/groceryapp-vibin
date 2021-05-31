@@ -11,6 +11,8 @@
 	<main class="container-fluid">
 		<form action="RegisterUserServlet" method="post">
 			<h3>Register User</h3>
+			<h6 style="color:Tomato;">The mobile number must start with(6-9)and contains 10 digit</h6>
+			<h6 style="color:Tomato;">The pasword must contain one(a-z)(A-Z)(0-9)(!@#$%^*_=+-)and(8-12 digit)</h6>
 			<label>Enter the Mobilenumber</label> <input type="tel"
 				name="mobileNumber" id="mno" placeholder="Enter the mobile number"
 				pattern="[6-9][0-9]{9}" autofocus required> <br> <label>Enter

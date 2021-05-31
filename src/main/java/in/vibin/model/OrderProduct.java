@@ -6,6 +6,7 @@ public class OrderProduct {
 	private int orderedQuantity;
 	private double amount;
 	private int id;
+
 	public OrderProduct() {
 		super();
 	}
@@ -22,6 +23,7 @@ public class OrderProduct {
 	public String getName() {
 		return name;
 	}
+
 	public int getID() {
 		return id;
 	}
@@ -46,6 +48,7 @@ public class OrderProduct {
 	public void setID(int id) {
 		this.id = id;
 	}
+
 	public void setPrice(double price) {
 		this.price = price;
 	}
