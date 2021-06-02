@@ -73,7 +73,7 @@
 				if (isAdmin == "admin") {
 				%>
 				<li class="nav-item active"><a class="nav-link"
-					href="sellinghistory.jsp">OrderHistory</a></li>
+					href="sellinghistory.jsp">PurchaseHistory</a></li>
 				<li class="nav-item active"><a class="nav-link"
 					href="AdminLogoutServlet">Logout=></a></li>
 				<%
@@ -82,6 +82,8 @@
 				<%
 				if (isUser == "user") {
 				%>
+				<li class="nav-item active"><a class="nav-link"
+					href="orderproduct.jsp">Cart</a></li>
 				<li class="nav-item active"><a class="nav-link"
 					href="UserLogoutServlet">Logout=></a></li>
 				<%

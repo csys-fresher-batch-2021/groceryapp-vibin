@@ -11,9 +11,11 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-		<h3>Order History</h3>
-		<table class="table table-bordered">
-			<caption>Order History</caption>
+		<h3>Purchase History</h3>
+		<label>Enter the name</label>
+		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names...">
+		<table class="table table-bordered" id="table">
+			<caption>Purchase History</caption>
 			<thead>
 				<tr>
 					<th id="id">MobileNumber</th>
@@ -21,8 +23,8 @@
 					<th id="price">Price per Quantity</th>
 					<th id="quantity">Ordered Quantity</th>
 					<th id="amount">Amount</th>
-					<th id="quantity">Buy Date</th>
-					<th id="amount">Buy Time</th>
+					<th id="quantity">Purchase Date</th>
+					<th id="amount">Purchase Time</th>
 				</tr>
 			</thead>
 
@@ -52,6 +54,27 @@
 			}
 			%>
 		</table>
+		<script>
+		function myFunction() {
+	let input, filter, table, row, data, i, txtValue;
+	input = document.getElementById("myInput");
+	filter = input.value.toUpperCase();
+	table = document.getElementById("table");
+	row = table.getElementsByTagName("tr");
+	for (i = 0; i < row.length; i++) {
+		data = row[i].getElementsByTagName("td")[0];
+		if (data) {
+			txtValue = data.textContent || data.innerText;
+			if (txtValue.toUpperCase().indexOf(filter) ==0) {
+				row[i].style.display = "";
+			} else {
+				row[i].style.display = "none";
+			}
+		}
+	}
+}
+
+</script>
 	</main>
 </body>
 </html>
