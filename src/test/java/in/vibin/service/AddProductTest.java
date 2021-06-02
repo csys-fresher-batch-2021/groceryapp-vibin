@@ -46,7 +46,7 @@ public class AddProductTest {
 	// ID and name already exist it will return=3
 	public void testExistingName() {
 		Product product=new Product();
-		product.setID(30);
+		product.setID(35);
 		product.setName("wheat");
 		product.setPrice(12);
 		product.setQuantity(35);
