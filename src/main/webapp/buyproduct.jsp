@@ -10,15 +10,21 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
+	<%
+				String isUser = (String) session.getAttribute("LOGGED_IN_USER");
+	String isAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
+	if(isUser!="user"&&isAdmin==null){
+		response.sendRedirect("userlogin.jsp?errorMessage=Please login");
+		}
+				%>
+	
 		<h3>List of products</h3>
 		<label>Enter the name</label>
 		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names...">
 		<table class="table table-bordered" id="table">
 			<caption>List of Products</caption>
 			<thead>
-				<%
-				String isAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
-				%>
+				
 				<tr>
 					<th id="sNo">S.NO</th>
 					<th id="id">ID</th>

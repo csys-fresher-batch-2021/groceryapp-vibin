@@ -23,7 +23,7 @@ public class GroceryListDAO {
 		List<Product> productList = new ArrayList<>();
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "SELECT * FROM grocery_list";
+			String sql = "SELECT * FROM grocery_list ORDER BY name ASC";
 			pst = connection.prepareStatement(sql);
 
 			ResultSet rs = pst.executeQuery();

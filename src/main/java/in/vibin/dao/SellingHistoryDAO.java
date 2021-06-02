@@ -20,7 +20,7 @@ public class SellingHistoryDAO {
 		List<OrderHistory> orderHistoryList = new ArrayList<>();
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "SELECT * FROM selling_history";
+			String sql = "SELECT * FROM selling_history ORDER BY buy_date DESC ,buy_time DESC";
 			pst = connection.prepareStatement(sql);
 
 			ResultSet rs = pst.executeQuery();

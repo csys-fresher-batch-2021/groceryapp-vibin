@@ -61,6 +61,12 @@
 		 <a
 			href="SellingHistoryServlet?productname=<%=name%>&priceperquantity=<%=price%>&orderedquantity=<%=quantity%>&amount=<%=amount%>"
 			class="btn btn-info">Proceed for Bill</a>
+			<%
+			String errorMessage = request.getParameter("errorMessage");
+			if (errorMessage != null) {
+				out.println("<font color='red'>" + errorMessage + "</font>");
+			}
+			%>
 	</main>
 </body>
 </html>

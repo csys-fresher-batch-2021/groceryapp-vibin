@@ -33,7 +33,7 @@
 					%>
 				</li>
 				<%
-				if (isUser == "user") {
+				if (isAdmin != "admin") {
 				%>
 				<li class="nav-item active"><a class="nav-link"
 					href="buyproduct.jsp">BuyProduct</a></li>

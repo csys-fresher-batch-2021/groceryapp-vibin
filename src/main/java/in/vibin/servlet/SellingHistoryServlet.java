@@ -34,6 +34,11 @@ public class SellingHistoryServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		List<OrderProduct>orderProduct=OrderService.getProduct();
+		int size=orderProduct.size();
+		if(size<=0) {
+			response.sendRedirect("orderproduct.jsp?errorMessage=Please purchase product");
+		}else {
 		HttpSession session = request.getSession();
 		long mobileNumber = (Long) session.getAttribute("userMobileNumber");
 		List<OrderProduct>orderedProduct=OrderService.getProduct();
@@ -42,5 +47,5 @@ public class SellingHistoryServlet extends HttpServlet {
 		session.removeAttribute("LOGGED_IN_USER");
 		response.sendRedirect("billproduct.jsp");
 	}
-
+	}
 }
