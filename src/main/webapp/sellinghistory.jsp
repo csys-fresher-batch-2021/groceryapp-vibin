@@ -13,7 +13,7 @@
 	<main class="container-fluid">
 		<h3>Purchase History</h3>
 		<label>Enter the name</label>
-		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names...">
+		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for mobile number...">
 		<table class="table table-bordered" id="table">
 			<caption>Purchase History</caption>
 			<thead>

@@ -58,7 +58,7 @@
 
 		</table>
 		<label>Total Amount(Rs.)</label> <input value=<%=totalAmount%>>
-		<a href="buyproduct.jsp" class="btn btn-info">OrderProduct</a> <a
+		 <a
 			href="SellingHistoryServlet?productname=<%=name%>&priceperquantity=<%=price%>&orderedquantity=<%=quantity%>&amount=<%=amount%>"
 			class="btn btn-info">Proceed for Bill</a>
 	</main>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="in.vibin.service.OrderService"%>
 <html lang="en">
 <head>
 <title>MyApp</title>
@@ -9,6 +10,9 @@
 		<%
 		String isAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
 		String isUser = (String) session.getAttribute("LOGGED_IN_USER");
+		if(isUser==null){
+			OrderService.removeCart();
+		}
 		if (isAdmin=="admin") {
 			out.println("<font color='green'> ADMIN Login </font>");
 		}

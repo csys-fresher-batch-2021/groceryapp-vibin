@@ -49,4 +49,13 @@ public class OrderService {
 			e.printStackTrace();
 		}
 	}
+	public static void removeCart() {
+		List<OrderProduct>cartList=getProduct();
+		for(OrderProduct orderProduct:cartList) {
+			orderProduct.getID();
+			orderProduct.getName();
+			orderProduct.getOrderedQuantity();
+			removeOrderedProduct(orderProduct);
+		}
+	}
 }
