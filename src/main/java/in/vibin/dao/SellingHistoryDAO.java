@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import in.vibin.model.OrderHistory;
+import in.vibin.model.OrderProduct;
 import in.vibin.util.ConnectionUtil;
 
 public class SellingHistoryDAO {
@@ -48,20 +49,22 @@ public class SellingHistoryDAO {
 		return orderHistoryList;
 	}
 
-	public static void addSellingHistory(OrderHistory orderProduct) throws SQLException {
+	public static void addSellingHistory(long mobileNumber,List<OrderProduct> orderedProduct) throws SQLException {
 		PreparedStatement pst = null;
 		Connection connection = null;
 		try {
 			connection = ConnectionUtil.getConnection();
+			for(OrderProduct orderProduct:orderedProduct) {
 			String sql = "INSERT INTO selling_history(mobilenumber,product_name,price_per_quantity,ordered_quantity,amount) VALUES(?,?,?,?,?)";
 			pst = connection.prepareStatement(sql);
-			pst.setLong(1, orderProduct.getMobileNumber());
+			pst.setLong(1, mobileNumber);
 			pst.setString(2, orderProduct.getName());
 			pst.setDouble(3, orderProduct.getPrice());
 			pst.setInt(4, orderProduct.getOrderedQuantity());
 			pst.setDouble(5, orderProduct.getAmount());
-
 			pst.executeUpdate();
+			pst.close();
+			}
 			ConnectionUtil.close(connection);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

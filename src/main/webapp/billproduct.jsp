@@ -48,7 +48,7 @@
 		</table>
 		<label>Total Amount(Rs.)</label>
 		<input value=<%=totalAmount %>><br>
-		<a href="DeleteOrderProductTableServlet" class="btn btn-info">Confirm Order</a>
+		<a href="DeleteOrderProductTableServlet" class="btn btn-info">Go To Home</a>
 	</main>
 </body>
 </html>
