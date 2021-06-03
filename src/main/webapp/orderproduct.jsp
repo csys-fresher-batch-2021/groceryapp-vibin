@@ -81,9 +81,6 @@
 			</tbody>
 
 		</table>
-
-
-
 		<a href="SellingHistoryServlet" class="btn btn-info">Proceed for
 			Bill</a>
 		<%
