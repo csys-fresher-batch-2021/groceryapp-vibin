@@ -59,7 +59,7 @@
 		</table>
 		<label>Total Amount(Rs.)</label> <input value=<%=totalAmount%>>
 		 <a
-			href="SellingHistoryServlet?productname=<%=name%>&priceperquantity=<%=price%>&orderedquantity=<%=quantity%>&amount=<%=amount%>"
+			href="SellingHistoryServlet"
 			class="btn btn-info">Proceed for Bill</a>
 			<%
 			String errorMessage = request.getParameter("errorMessage");
