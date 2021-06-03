@@ -20,7 +20,7 @@
 					<th id="price">Price per Quantity</th>
 					<th id="orderedquantity">Ordered Quantity</th>
 					<th id="amount">Amount</th>
-					<th id="amount">Remove Order</th>
+					<th id="amount">Cancel Order</th>
 			</thead>
 			<%
 			int i = 0;
@@ -49,7 +49,7 @@
 					<td>Rs. <%=amount%></td>
 					<td><a
 						href="RemoveOrderProductServlet?name=<%=name%>&id=<%=id%>&price=<%=price%>&quantity=<%=quantity%>"
-						class="btn btn-danger">CancelOrder</a></td>
+						class="btn btn-danger">Cancel</a></td>
 					<%
 					}
 					%>
@@ -58,9 +58,15 @@
 
 		</table>
 		<label>Total Amount(Rs.)</label> <input value=<%=totalAmount%>>
-		<a href="buyproduct.jsp" class="btn btn-info">OrderProduct</a> <a
-			href="SellingHistoryServlet?productname=<%=name%>&priceperquantity=<%=price%>&orderedquantity=<%=quantity%>&amount=<%=amount%>"
+		 <a
+			href="SellingHistoryServlet"
 			class="btn btn-info">Proceed for Bill</a>
+			<%
+			String errorMessage = request.getParameter("errorMessage");
+			if (errorMessage != null) {
+				out.println("<font color='red'>" + errorMessage + "</font>");
+			}
+			%>
 	</main>
 </body>
 </html>

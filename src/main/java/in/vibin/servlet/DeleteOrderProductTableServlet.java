@@ -31,6 +31,5 @@ public class DeleteOrderProductTableServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		OrderService.deleteOrderProductTable();
-		response.sendRedirect("index.jsp");
 	}
 }

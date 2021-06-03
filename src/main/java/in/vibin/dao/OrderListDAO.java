@@ -22,7 +22,7 @@ public class OrderListDAO {
 		List<OrderProduct> orderProductList = new ArrayList<>();
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "SELECT * FROM order_list";
+			String sql = "SELECT * FROM order_list ORDER BY name ASC";
 			pst = connection.prepareStatement(sql);
 
 			ResultSet rs = pst.executeQuery();

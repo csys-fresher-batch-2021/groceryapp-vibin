@@ -41,14 +41,16 @@
 					<td>Rs. <%=price%></td>
 					<td><%=quantity%></td>
 					<td>Rs. <%=amount%></td>
-					<%} %>
+					<%}
+			OrderService.deleteOrderProductTable();
+			%>
 				</tr>
 			</tbody>
 			
 		</table>
 		<label>Total Amount(Rs.)</label>
 		<input value=<%=totalAmount %>><br>
-		<a href="DeleteOrderProductTableServlet" class="btn btn-info">Go To Home</a>
+		<a href="UserLogoutServlet" class="btn btn-info">Go To Home</a>
 	</main>
 </body>
 </html>

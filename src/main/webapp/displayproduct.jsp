@@ -12,7 +12,9 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>Display product</h3>
-		<table class="table table-bordered">
+		<label>Enter the name</label>
+		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names...">
+		<table class="table table-bordered" id="table">
 			<caption>List of Products</caption>
 
 			<thead>
@@ -29,7 +31,7 @@
 			</tbody>
 		</table>
 		<script>
-
+		getAllProducts();
 function getAllProducts(){
 	
 	console.log("Fetching all tasks");
@@ -50,7 +52,25 @@ function getAllProducts(){
 		
 	}
 
-getAllProducts();
+
+function myFunction() {
+	let input, filter, table, row, data, i, txtValue;
+	input = document.getElementById("myInput");
+	filter = input.value.toUpperCase();
+	table = document.getElementById("table");
+	row = table.getElementsByTagName("tr");
+	for (i = 0; i < row.length; i++) {
+		data = row[i].getElementsByTagName("td")[1];
+		if (data) {
+			txtValue = data.textContent || data.innerText;
+			if (txtValue.toUpperCase().indexOf(filter) >-1) {
+				row[i].style.display = "";
+			} else {
+				row[i].style.display = "none";
+			}
+		}
+	}
+}
 
 </script>
 	</main>
