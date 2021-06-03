@@ -49,7 +49,7 @@
 			
 		</table>
 		<label>Total Amount(Rs.)</label>
-		<input value=<%=totalAmount %>><br>
+		<input value=<%=totalAmount %> readonly><br>
 		<a href="UserLogoutServlet" class="btn btn-info">Go To Home</a>
 	</main>
 </body>
