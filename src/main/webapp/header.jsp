@@ -20,15 +20,13 @@
 				<li class="nav-item active">
 					<%
 					if (isAdmin == "admin") {
-					%> <a class="nav-link"
-					href="displayproduct.jsp">DisplayOverview<span class="sr-only">(current)</span></a>
-					<%
+					%> <a class="nav-link" href="displayproduct.jsp">DisplayOverview<span
+						class="sr-only">(current)</span></a> <%
 					}
 					%> <%
  if (isAdmin == null && isUser == null) {
- %> <a class="nav-link"
-					href="displayproduct.jsp">DisplayProduct<span class="sr-only">(current)</span></a>
-					<%
+ %> <a class="nav-link" href="displayproduct.jsp">DisplayProduct<span
+						class="sr-only">(current)</span></a> <%
 					}
 					%>
 				</li>
@@ -80,7 +78,7 @@
 				}
 				%>
 				<%
-				if (isUser == "user") {
+				if (isUser == "user" || isUser=="newUser") {
 				%>
 				<li class="nav-item active"><a class="nav-link"
 					href="orderproduct.jsp">Cart</a></li>

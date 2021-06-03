@@ -2,6 +2,7 @@
 <%@page import="in.vibin.dao.*"%>
 <%@page import="java.util.List"%>
 <%@page import="in.vibin.model.*"%>
+<%@page import="java.lang.Math"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,9 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
+		<%
+		String isUser = (String) session.getAttribute("LOGGED_IN_USER");
+		%>
 		<h3>Ordered Product List</h3>
 		<table class="table table-bordered">
 			<caption>List of Products</caption>
@@ -29,6 +33,7 @@
 			double price = 0;
 			int quantity = 0;
 			double amount = 0;
+
 			List<OrderProduct> orderProductList = OrderService.getProduct();
 			for (OrderProduct orderProduct : orderProductList) {
 				name = orderProduct.getName();
@@ -54,19 +59,39 @@
 					}
 					%>
 				</tr>
+				<tr>
+					<th id="totalamount" colspan=4 class="text-center">TOTAL
+						AMOUNT</th>
+					<th id="tamount">Rs. <%=totalAmount%></th>
+				<tr>
+					<%
+					if (isUser == "newUser") {
+						double totalAmountOffer = Math.round(totalAmount - (totalAmount * 0.15));
+					%>
+				
+				<tr>
+					<th id="offeramount" colspan=4 class="text-center">Final
+						Amount(15% Discount For New User)</th>
+					<th id="oamount">Rs. <%=totalAmountOffer%></th>
+				<tr>
+					<%
+					}
+					%>
+				
 			</tbody>
 
 		</table>
-		<label>Total Amount(Rs.)</label> <input value=<%=totalAmount%>>
-		 <a
-			href="SellingHistoryServlet"
-			class="btn btn-info">Proceed for Bill</a>
-			<%
-			String errorMessage = request.getParameter("errorMessage");
-			if (errorMessage != null) {
-				out.println("<font color='red'>" + errorMessage + "</font>");
-			}
-			%>
+
+
+
+		<a href="SellingHistoryServlet" class="btn btn-info">Proceed for
+			Bill</a>
+		<%
+		String errorMessage = request.getParameter("errorMessage");
+		if (errorMessage != null) {
+			out.println("<font color='red'>" + errorMessage + "</font>");
+		}
+		%>
 	</main>
 </body>
 </html>

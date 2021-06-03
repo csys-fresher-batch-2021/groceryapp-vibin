@@ -46,9 +46,16 @@ public class UserLoginServlet extends HttpServlet {
 		}
 		if (isUser) {
 			HttpSession session = request.getSession();
-			session.setAttribute("LOGGED_IN_USER", "user");
 			session.setAttribute("userMobileNumber", mobileNumberLong);
-			response.sendRedirect("index.jsp?infoMessage=" + "User Login");
+			boolean isNewUser=UserLoginService.isNewUser(mobileNumberLong);
+			if(isNewUser) {
+				session.setAttribute("LOGGED_IN_USER", "newUser");
+				response.sendRedirect("index.jsp?infoMessage=" + "New User Login");
+			}else {
+				session.setAttribute("LOGGED_IN_USER", "user");
+				response.sendRedirect("index.jsp?infoMessage=" + "User Login");
+			}
+			
 		} else {
 			response.sendRedirect("userlogin.jsp?errorMessage=" + "Invalid Inputs");
 		}

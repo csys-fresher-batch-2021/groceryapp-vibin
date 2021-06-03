@@ -77,5 +77,30 @@ public class SellingHistoryDAO {
 			}
 		}
 	}
-
+public static boolean isNewUser(long mobileNumber) throws SQLException {
+	Connection connection = null;
+	boolean isNewUser = true;
+	PreparedStatement pst = null;
+	try {
+		connection = ConnectionUtil.getConnection();
+		String sql = "SELECT mobilenumber FROM selling_history WHERE mobilenumber=?";
+		pst = connection.prepareStatement(sql);
+		pst.setLong(1, mobileNumber);
+		ResultSet rs = pst.executeQuery();
+		if (rs.next()) {
+			isNewUser = false;
+		}
+		ConnectionUtil.close(connection);
+	} catch (ClassNotFoundException | SQLException e) {
+		e.printStackTrace();
+	} finally {
+		if (pst != null) {
+			pst.close();
+		}
+		if (connection != null) {
+			ConnectionUtil.close(connection);
+		}
+	}
+	return isNewUser;
+}
 }

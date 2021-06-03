@@ -10,21 +10,21 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-	<%
-				String isUser = (String) session.getAttribute("LOGGED_IN_USER");
-	String isAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
-	if(isUser!="user"&&isAdmin==null){
-		response.sendRedirect("userlogin.jsp?errorMessage=Please login");
+		<%
+		String isUser = (String) session.getAttribute("LOGGED_IN_USER");
+		String isAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
+		if (isUser != "user" && isUser != "newUser" && isAdmin == null) {
+			response.sendRedirect("userlogin.jsp?errorMessage=Please login");
 		}
-				%>
-	
+		%>
+
 		<h3>List of products</h3>
-		<label>Enter the name</label>
-		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names...">
+		<label>Enter the name</label> <input type="text" id="myInput"
+			onkeyup="myFunction()" placeholder="Search for names...">
 		<table class="table table-bordered" id="table">
 			<caption>List of Products</caption>
 			<thead>
-				
+
 				<tr>
 					<th id="sNo">S.NO</th>
 					<th id="id">ID</th>
@@ -80,7 +80,8 @@
 					<%
 					if (isAdmin != null && isAdmin.equals("admin")) {
 					%>
-					<td><a href="AddQuantityServlet?productID=<%=id%>&availablequantity=<%=quantity%>"
+					<td><a
+						href="AddQuantityServlet?productID=<%=id%>&availablequantity=<%=quantity%>"
 						class="btn btn-info">Add quantity</a>
 					<td><a href="DeleteProductServlet?productID=<%=id%>"
 						class="btn btn-danger">Delete</a> <%
@@ -93,32 +94,32 @@
 			%>
 		</table>
 		<%
-	if (isAdmin != null && isAdmin.equals("admin")) {
-	%>
-	<a href="addproduct.jsp" class="btn btn-info">ADD Product</a>
-	<%
-	}
-	%>
+		if (isAdmin != null && isAdmin.equals("admin")) {
+		%>
+		<a href="addproduct.jsp" class="btn btn-info">ADD Product</a>
+		<%
+		}
+		%>
 	</main>
-	<script >
-function myFunction() {
-	let input, filter, table, row, data, i, txtValue;
-	input = document.getElementById("myInput");
-	filter = input.value.toUpperCase();
-	table = document.getElementById("table");
-	row = table.getElementsByTagName("tr");
-	for (i = 0; i < row.length; i++) {
-		data = row[i].getElementsByTagName("td")[2];
-		if (data) {
-			txtValue = data.textContent || data.innerText;
-			if (txtValue.toUpperCase().indexOf(filter) >-1) {
-				row[i].style.display = "";
-			} else {
-				row[i].style.display = "none";
+	<script>
+		function myFunction() {
+			let input, filter, table, row, data, i, txtValue;
+			input = document.getElementById("myInput");
+			filter = input.value.toUpperCase();
+			table = document.getElementById("table");
+			row = table.getElementsByTagName("tr");
+			for (i = 0; i < row.length; i++) {
+				data = row[i].getElementsByTagName("td")[2];
+				if (data) {
+					txtValue = data.textContent || data.innerText;
+					if (txtValue.toUpperCase().indexOf(filter) > -1) {
+						row[i].style.display = "";
+					} else {
+						row[i].style.display = "none";
+					}
+				}
 			}
 		}
-	}
-}
-</script>
+	</script>
 </body>
 </html>
