@@ -57,7 +57,7 @@
 			</tbody>
 
 		</table>
-		<label>Total Amount(Rs.)</label> <input value=<%=totalAmount%>>
+		<label>Total Amount(Rs.)</label> <input value=<%=totalAmount%> readonly>
 		 <a
 			href="SellingHistoryServlet"
 			class="btn btn-info">Proceed for Bill</a>
