@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import in.vibin.service.*;
 import in.vibin.validator.MobileNumberValidation;
+import in.vibin.validator.NumberValidation;
 import in.vibin.validator.PasswordValidation;
 
 /**
@@ -27,7 +28,7 @@ public class AdminLoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String mobileNumber = request.getParameter("mobileNumber").trim();
 		String password = request.getParameter("password").trim();
-		long mobileNumberLong=Long.parseLong(mobileNumber);
+		long mobileNumberLong=NumberValidation.parseLong(mobileNumber, "Invalid mobileNumber");
 		boolean isValidPassword = PasswordValidation.checkPassword(password);
 		boolean isValidMobileNumber = MobileNumberValidation.checkMobileNumber(mobileNumberLong);
 		boolean isAdmin = false;
