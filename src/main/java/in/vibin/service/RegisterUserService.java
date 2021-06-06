@@ -28,7 +28,7 @@ public static boolean isUserMobileNumberExist(long mobileNumber) {
 public static void registerUser(Long mobileNumberLong,String password,String rePassword) throws RegisterUserException, SuccessfullException {
 boolean isExistMobileNumber=RegisterUserService.isUserMobileNumberExist(mobileNumberLong);
 if(isExistMobileNumber) {
-	throw new RegisterUserException("MobileNumber Already Exist");
+	throw new RegisterUserException("User Already exist. Please Check The Mobile Number");
 }
 else if(password.equals(rePassword)) {
 		try {

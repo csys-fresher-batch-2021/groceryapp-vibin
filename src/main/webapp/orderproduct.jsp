@@ -11,7 +11,7 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>Ordered Product List</h3>
-		<table class="table table-bordered">
+		<table class="table table-hover table-bordered">
 			<caption>List of Products</caption>
 			<thead>
 				<tr>
@@ -54,10 +54,15 @@
 					}
 					%>
 				</tr>
+				<tr>
+					<th id="totalamount" colspan=4 class="text-center">Total
+						Amount</th>
+					<th id="tamount">Rs. <%=totalAmount%></th>
+				<tr>
 			</tbody>
 
 		</table>
-		<label>Total Amount(Rs.)</label> <input value=<%=totalAmount%> readonly>
+		
 		 <a
 			href="SellingHistoryServlet"
 			class="btn btn-info">Proceed for Bill</a>

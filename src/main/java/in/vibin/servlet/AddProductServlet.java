@@ -41,7 +41,7 @@ public class AddProductServlet extends HttpServlet {
 				product.setQuantity(quantity);
 
 				ProductService.addProduct(product);
-				response.sendRedirect("addproduct.jsp?infoMessage=Successfully added");
+				response.sendRedirect("addproduct.jsp?infoMessage=Proudct added Successfully");
 				// addproduct.jsp
 			}
 		} catch (Exception e) {

@@ -5,17 +5,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" >
 <title>GroceryManagementApp</title>
 </head>
 <body>
 	<main class="container-fluid">
 		<h3>####Grocery Store</h3>
-		<table class="table table-bordered" border=1>
+		<table  class="table table-hover table-bordered">
 			<caption>BILL</caption>
 			<thead>
 				<tr>
 					<th id="sNo">S.NO</th>
-					<th id="name">Name</th>
+					<th id="name">Product Name</th>
 					<th id="price">Price per Quantity</th>
 					<th id="orderedquantity">Ordered Quantity</th>
 					<th id="amount">Amount</th>
@@ -41,16 +42,21 @@
 					<td>Rs. <%=price%></td>
 					<td><%=quantity%></td>
 					<td>Rs. <%=amount%></td>
-					<%}
-			OrderService.deleteOrderProductTable();
-			%>
+					<%} %>
 				</tr>
+				<tr>
+					<th id="totalamount" colspan=4 class="text-center">Total
+						Amount</th>
+					<th id="tamount">Rs. <%=totalAmount%></th>
+				<tr>
 			</tbody>
 			
 		</table>
-		<label>Total Amount(Rs.)</label>
-		<input value=<%=totalAmount %> readonly><br>
+		
 		<a href="UserLogoutServlet" class="btn btn-info">Go To Home</a>
+		<%
+			OrderService.deleteOrderProductTable();
+			%>
 	</main>
 </body>
 </html>

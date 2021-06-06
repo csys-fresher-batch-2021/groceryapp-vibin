@@ -28,7 +28,7 @@ public class AdminLoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String mobileNumber = request.getParameter("mobileNumber").trim();
 		String password = request.getParameter("password").trim();
-		long mobileNumberLong = NumberValidation.parseLong(mobileNumber, "Invalid mobile number");
+		long mobileNumberLong=NumberValidation.parseLong(mobileNumber, "Invalid mobileNumber");
 		boolean isValidPassword = PasswordValidation.checkPassword(password);
 		boolean isValidMobileNumber = MobileNumberValidation.checkMobileNumber(mobileNumberLong);
 		boolean isAdmin = false;
@@ -38,10 +38,9 @@ public class AdminLoginServlet extends HttpServlet {
 		if (isAdmin) {
 			HttpSession session = request.getSession();
 			session.setAttribute("LOGGED_IN_ADMIN", "admin");
-			
 			response.sendRedirect("index.jsp?infoMessage=" + "Admin Login");
 		} else {
-			response.sendRedirect("adminlogin.jsp?errorMessage=" + "Invalid Inputs");
+			response.sendRedirect("adminlogin.jsp?errorMessage=" + "Login Failed. Please Try Again!..");
 		}
 	}
 
