@@ -22,7 +22,6 @@
 				required> <br> <label>Re-Enter the Password</label> <input
 				type="password" name="repassword" id="repassword"
 				placeholder="Enter the password"
-				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
 				required> <br>
 			<button type="submit" class="btn btn-info">REGISTER</button>
 			<br>

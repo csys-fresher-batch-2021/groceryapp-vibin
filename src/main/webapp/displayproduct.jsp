@@ -12,14 +12,14 @@
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
 		<h3>Display product</h3>
-		<label>Enter the name</label>
-		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names...">
-		<table class="table table-bordered" id="table">
+		<label>Enter the name</label> <input type="text" id="myInput"
+			onkeyup="myFunction()" placeholder="Search for names...">
+		<table class="table table-hover table-bordered" id="table">
 			<caption>List of Products</caption>
 
 			<thead>
 				<tr>
-
+					<th id="sno">S.No</th>
 					<th id="id">ID</th>
 					<th id="name">Name</th>
 					<th id="price">Price per Quantity</th>
@@ -33,19 +33,20 @@
 		<script>
 		getAllProducts();
 function getAllProducts(){
-	
-	console.log("Fetching all tasks");
 	let url="DisplayProductServlet";
+	let i=0;
+	let serialNo=0;
 	fetch(url).then(res=>res.json()).then(res=>{
 		console.log(res);
 		let products=res;
-		console.log("Got response from servlet");
 		 let content="";
 		for (let product of products){
-			
- 				content +="<tr><td>"+ product.id + "</td><td>"+ product.name +"</td><td>"+"Rs. "+product.price+"</td><td>"+product.quantity+"</td></tr>";					
+			if(product.quantity>0){
+				i++;
+				serialNo=i;
+ 				content +="<tr><td>"+ serialNo + "</td><td>"+ product.id + "</td><td>"+ product.name +"</td><td>"+"Rs. "+product.price+"</td><td>"+product.quantity+"</td></tr>";					
+			}
 		}
-		console.log(content);
 		document.querySelector("#product-tbl").innerHTML=content; 
 		
 		})

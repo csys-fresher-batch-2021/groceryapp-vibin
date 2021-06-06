@@ -11,12 +11,11 @@
 	<main class="container-fluid">
 		<form action="UserLoginServlet" method="post">
 			<h3>User Login</h3>
-			<label>Mobilenumber</label> <input type="tel" name="mobileNumber"
+			<label>Mobilenumber</label> <input type="number" min="0" name="mobileNumber"
 				id="mno" placeholder="Enter the mobile number"
-				pattern="[6-9][0-9]{9}" autofocus required> <br> <label>Password</label>
+				 autofocus required> <br> <label>Password</label>
 			<input type="password" name="password" id="password"
 				placeholder="Enter the password"
-				pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$"
 				required> <br>
 			<button type="submit" class="btn btn-info">USER LOGIN</button>
 			<br>
