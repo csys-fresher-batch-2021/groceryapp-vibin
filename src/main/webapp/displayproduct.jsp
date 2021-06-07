@@ -61,7 +61,7 @@ function myFunction() {
 	table = document.getElementById("table");
 	row = table.getElementsByTagName("tr");
 	for (i = 0; i < row.length; i++) {
-		data = row[i].getElementsByTagName("td")[1];
+		data = row[i].getElementsByTagName("td")[2];
 		if (data) {
 			txtValue = data.textContent || data.innerText;
 			if (txtValue.toUpperCase().indexOf(filter) >-1) {

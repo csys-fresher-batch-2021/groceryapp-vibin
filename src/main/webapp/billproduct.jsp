@@ -11,6 +11,7 @@
 <body>
 	<main class="container-fluid">
 		<h3>####Grocery Store</h3>
+		<h4>BILL</h4>
 		<table  class="table table-hover table-bordered">
 			<caption>BILL</caption>
 			<thead>
