@@ -1,8 +1,15 @@
+<%@page import="java.time.LocalTime"%>
+<%@page import="java.sql.Time"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Locale"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.sql.Date"%>
 <%@page import="in.vibin.service.SellingHistory"%>
 <%@page import="in.vibin.service.ProductService"%>
 <%@page import="in.vibin.dao.*"%>
 <%@page import="java.util.List"%>
 <%@page import="in.vibin.model.*"%>
+<%@page import="java.time.LocalDate"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,8 +43,12 @@
 				double price = orderHistory.getPrice();
 				int quantity = orderHistory.getOrderedQuantity();
 				double amount = orderHistory.getAmount();
-				String date = orderHistory.getOrderDate();
-				String time = orderHistory.getOrderTime();
+				Date sqlDate = orderHistory.getOrderDate();
+				LocalDate date =sqlDate.toLocalDate();
+			    String dateStr=DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH).format(date);
+				Time sqlTime = orderHistory.getOrderTime();
+				LocalTime time=sqlTime.toLocalTime();
+				String timeStr=DateTimeFormatter.ofPattern("hh:mm a").format(time);
 			%>
 			<tbody>
 				<tr>
@@ -46,8 +57,8 @@
 					<td>Rs. <%=price%></td>
 					<td><%=quantity%></td>
 					<td>Rs. <%=amount%></td>
-					<td><%=date%></td>
-					<td><%=time%></td>
+					<td><%=dateStr%></td>
+					<td><%=timeStr%></td> 
 				</tr>
 			</tbody>
 			<%

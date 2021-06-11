@@ -31,8 +31,8 @@ public class SellingHistoryDAO {
 				orderHistory.setPrice(rs.getDouble("price_per_quantity"));
 				orderHistory.setOrderedQuantity(rs.getInt("ordered_quantity"));
 				orderHistory.setAmount(rs.getDouble("amount"));
-				orderHistory.setOrderDate(rs.getString("buy_date"));
-				orderHistory.setOrderTime(rs.getString("buy_time"));
+				orderHistory.setOrderDate(rs.getDate("buy_date"));
+				orderHistory.setOrderTime(rs.getTime("buy_time"));
 				orderHistoryList.add(orderHistory);
 			}
 			ConnectionUtil.close(connection);

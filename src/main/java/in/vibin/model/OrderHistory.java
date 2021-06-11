@@ -1,13 +1,16 @@
 package in.vibin.model;
 
+import java.sql.Date;
+import java.sql.Time;
+
 public class OrderHistory {
 	private long mobileNumber;
 	private String productName;
 	private double pricePerQuantity;
 	private int orderedQuantity;
 	private double amount;
-	private String orderDate;
-	private String orderTime;
+	private Date orderDate;
+	private Time orderTime;
 
 	public OrderHistory() {
 		super();
@@ -34,11 +37,11 @@ public class OrderHistory {
 		return amount;
 	}
 
-	public String getOrderDate() {
+	public Date getOrderDate() {
 		return orderDate;
 	}
 
-	public String getOrderTime() {
+	public Time getOrderTime() {
 		return orderTime;
 	}
 
@@ -63,11 +66,11 @@ public class OrderHistory {
 		this.amount = amount;
 	}
 
-	public void setOrderDate(String orderDate) {
+	public void setOrderDate(Date orderDate) {
 		this.orderDate = orderDate;
 	}
 
-	public void setOrderTime(String orderTime) {
+	public void setOrderTime(Time orderTime) {
 		this.orderTime = orderTime;
 	}
 }
