@@ -80,7 +80,7 @@
 				}
 				%>
 				<%
-				if (isUser == "user") {
+				if (isUser == "user"||isUser == "newUser") {
 				%>
 				<li class="nav-item active"><a class="nav-link"
 					href="orderproduct.jsp">Cart</a></li>

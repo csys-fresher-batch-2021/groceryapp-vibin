@@ -13,7 +13,7 @@
 		<%
 		String isUser = (String) session.getAttribute("LOGGED_IN_USER");
 		String isAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
-		if (isUser != "user" && isAdmin == null) {
+		if (isUser != "user"&&isUser != "newUser" && isAdmin == null) {
 			response.sendRedirect("userlogin.jsp?errorMessage=Please login");
 		}
 		%>
@@ -61,7 +61,7 @@
 						int serialNo = i;
 					%>
 					<%
-					if (isUser == "user" && quantity > 0) {
+					if (isUser == "user"||isUser=="newUser" && quantity > 0) {
 						i++;
 					%>
 

@@ -1,5 +1,7 @@
 package in.vibin.service;
 import java.sql.SQLException;
+
+import in.vibin.dao.SellingHistoryDAO;
 import in.vibin.dao.UserListDAO;
 import in.vibin.validator.MobileNumberValidation;
 import in.vibin.validator.PasswordValidation;
@@ -20,5 +22,14 @@ public class UserLoginService {
 			}
 		}
 		return isUser;
+	}
+	public static boolean isNewUser(long mobileNumber) {
+		boolean isNewUser=true;
+		try {
+			isNewUser = SellingHistoryDAO.isNewUser(mobileNumber);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	return isNewUser;
 	}
 }

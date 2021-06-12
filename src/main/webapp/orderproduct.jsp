@@ -10,6 +10,7 @@
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
+		<%String isUser = (String) session.getAttribute("LOGGED_IN_USER"); %>
 		<h3>Ordered Product List</h3>
 		<table class="table table-hover table-bordered">
 			<caption>List of Products</caption>
@@ -55,23 +56,35 @@
 					%>
 				</tr>
 				<tr>
-					<th id="totalamount" colspan=4 class="text-center">Total
-						Amount</th>
+					<th id="totalamount" colspan=4 class="text-center">TOTAL
+						AMOUNT</th>
 					<th id="tamount">Rs. <%=totalAmount%></th>
 				<tr>
+					<%
+					if (isUser == "newUser") {
+						double totalAmountOffer = Math.round(totalAmount - (totalAmount * 0.15));
+					%>
+				
+				<tr>
+					<th id="offeramount" colspan=4 class="text-center">Final
+						Amount(15% Discount For New User)</th>
+					<th id="oamount">Rs. <%=totalAmountOffer%></th>
+				<tr>
+					<%
+					}
+					%>
+				
 			</tbody>
 
 		</table>
-		
-		 <a
-			href="SellingHistoryServlet"
-			class="btn btn-info">Proceed for Bill</a>
-			<%
-			String errorMessage = request.getParameter("errorMessage");
-			if (errorMessage != null) {
-				out.println("<font color='red'>" + errorMessage + "</font>");
-			}
-			%>
+		<a href="SellingHistoryServlet" class="btn btn-info">Proceed for
+			Bill</a>
+		<%
+		String errorMessage = request.getParameter("errorMessage");
+		if (errorMessage != null) {
+			out.println("<font color='red'>" + errorMessage + "</font>");
+		}
+		%>
 	</main>
 </body>
 </html>

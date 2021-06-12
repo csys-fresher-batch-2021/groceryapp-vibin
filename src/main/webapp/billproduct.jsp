@@ -10,6 +10,7 @@
 </head>
 <body>
 	<main class="container-fluid">
+	<%String isUser = (String) session.getAttribute("LOGGED_IN_USER"); %>
 		<h3>####Grocery Store</h3>
 		<h4>BILL</h4>
 		<table  class="table table-hover table-bordered">
@@ -45,15 +46,34 @@
 					<td>Rs. <%=amount%></td>
 					<%} %>
 				</tr>
+				<%
+				if (isUser == "user" || isUser == "newUser") {
+				%>
 				<tr>
 					<th id="totalamount" colspan=4 class="text-center">Total
 						Amount</th>
 					<th id="tamount">Rs. <%=totalAmount%></th>
 				<tr>
+					<%
+					}
+					%>
+					<%
+					if (isUser == "newUser") {
+						double totalAmountOffer = Math.round(totalAmount - (totalAmount * 0.15));
+					%>
+				
+				<tr>
+					<th id="offeramount" colspan=4 class="text-center">Final
+						Amount(15% Discount For New User)</th>
+					<th id="oamount">Rs. <%=totalAmountOffer%></th>
+				<tr>
+					<%
+					}
+					%>
+				
 			</tbody>
-			
+
 		</table>
-		
 		<a href="UserLogoutServlet" class="btn btn-info">Go To Home</a>
 		<%
 			OrderService.deleteOrderProductTable();

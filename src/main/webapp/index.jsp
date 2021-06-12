@@ -19,6 +19,9 @@
 		if(isUser=="user"){
 			out.println("<font color='green'> USER Login </font>");
 		}
+		if(isUser=="newUser"){
+			out.println("<font color='green'>NEW USER Login \n 15% Discount for new user</font>");
+		}
 		%>
 		<h3>Welcome To Grocery Management App</h3><br>
 		<p>REFERENCE(for test purpose only I show this login credentials...)</p><br>
