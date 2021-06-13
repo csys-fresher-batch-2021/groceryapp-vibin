@@ -13,14 +13,14 @@
 		<%
 		String isUser = (String) session.getAttribute("LOGGED_IN_USER");
 		String isAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
-		if (isUser != "user" && isAdmin == null) {
+		if (isUser != "user"&&isUser != "newUser" && isAdmin == null) {
 			response.sendRedirect("userlogin.jsp?errorMessage=Please login");
 		}
 		%>
 
 		<h3>List of products</h3>
 		<label>Enter the name</label> <input type="text" id="myInput"
-			onkeyup="myFunction()" placeholder="Search for names...">
+			onkeyup="myFunction()" placeholder="Search for names..." autofocus>
 		<table class="table table-hover table-bordered" id="table">
 			<caption>List of Products</caption>
 			<thead>
@@ -61,7 +61,7 @@
 						int serialNo = i;
 					%>
 					<%
-					if (isUser == "user" && quantity > 0) {
+					if (isUser == "user"||isUser=="newUser" && quantity > 0) {
 						i++;
 					%>
 

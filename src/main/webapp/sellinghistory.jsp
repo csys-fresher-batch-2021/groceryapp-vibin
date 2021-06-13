@@ -20,7 +20,7 @@
 	<main class="container-fluid">
 		<h3>Purchase History</h3>
 		<label>Enter the mobile number</label>
-		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for mobile number...">
+		<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for mobile number..." autofocus>
 		<table class="table table-hover table-bordered" id="table">
 			<caption>Purchase History</caption>
 			<thead>

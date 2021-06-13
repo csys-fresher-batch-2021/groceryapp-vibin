@@ -43,8 +43,6 @@ public class SellingHistoryServlet extends HttpServlet {
 		long mobileNumber = (Long) session.getAttribute("userMobileNumber");
 		List<OrderProduct>orderedProduct=OrderService.getProduct();
 		SellingHistory.addOrderHistory(mobileNumber,orderedProduct);
-		session.removeAttribute("mobileNumber");
-		session.removeAttribute("LOGGED_IN_USER");
 		response.sendRedirect("billproduct.jsp");
 	}
 	}

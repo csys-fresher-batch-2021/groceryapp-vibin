@@ -13,7 +13,7 @@
 	<main class="container-fluid">
 		<h3>Display product</h3>
 		<label>Enter the name</label> <input type="text" id="myInput"
-			onkeyup="myFunction()" placeholder="Search for names...">
+			onkeyup="myFunction()" placeholder="Search for names..." autofocus>
 		<table class="table table-hover table-bordered" id="table">
 			<caption>List of Products</caption>
 
