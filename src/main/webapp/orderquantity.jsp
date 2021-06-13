@@ -15,7 +15,7 @@
 		<form action="OrderProductServlet">
 			<label>Enter the quantity</label> <input type="number"
 				name="orderedquantity" id="orderedquantity" min="1"
-				max=<%=quantity%> placeholder="Enter the quantity" required><br>
+				max=<%=quantity%> placeholder="Enter the quantity" required autofocus><br>
 			<button class="btn btn-info">Order</button>
 		</form>
 

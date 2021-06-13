@@ -58,17 +58,19 @@
 					}
 					%>
 					<%
+					int discount=DiscountDAO.getDiscount();
 					if (isUser == "newUser") {
-						double totalAmountOffer = Math.round(totalAmount - (totalAmount * 0.15));
+						double totalAmountOffer = Math.round(totalAmount-(totalAmount*discount/100));
+						if(discount!=0){
 					%>
 				
 				<tr>
 					<th id="offeramount" colspan=4 class="text-center">Final
-						Amount(15% Discount For New User)</th>
+						Amount(<%=discount%> % Discount For New User)</th>
 					<th id="oamount">Rs. <%=totalAmountOffer%></th>
 				<tr>
 					<%
-					}
+					}}
 					%>
 				
 			</tbody>

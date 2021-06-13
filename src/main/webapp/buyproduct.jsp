@@ -20,7 +20,7 @@
 
 		<h3>List of products</h3>
 		<label>Enter the name</label> <input type="text" id="myInput"
-			onkeyup="myFunction()" placeholder="Search for names...">
+			onkeyup="myFunction()" placeholder="Search for names..." autofocus>
 		<table class="table table-hover table-bordered" id="table">
 			<caption>List of Products</caption>
 			<thead>

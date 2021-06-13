@@ -73,6 +73,8 @@
 				if (isAdmin == "admin") {
 				%>
 				<li class="nav-item active"><a class="nav-link"
+					href="discount.jsp">Discount</a></li>
+				<li class="nav-item active"><a class="nav-link"
 					href="sellinghistory.jsp">PurchaseHistory</a></li>
 				<li class="nav-item active"><a class="nav-link"
 					href="AdminLogoutServlet">Logout=></a></li>
