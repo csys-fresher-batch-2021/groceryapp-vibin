@@ -43,8 +43,9 @@ public class DiscountDAO {
 		Connection connection = null;
 		try {
 			connection = ConnectionUtil.getConnection();
-			String sql = "UPDATE discount SET discount="+discount+"WHERE sno=1";
+			String sql = "UPDATE discount SET discount=? WHERE sno=1";
 			pst = connection.prepareStatement(sql);
+			pst.setInt(1, discount);
 			pst.executeUpdate();
 			ConnectionUtil.close(connection);
 		} catch (ClassNotFoundException | SQLException e) {

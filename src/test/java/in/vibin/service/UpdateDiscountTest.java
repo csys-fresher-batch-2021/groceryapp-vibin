@@ -8,10 +8,10 @@ class UpdateDiscountTest {
 
 	@Test
 	void test() {
-		int updateDiscount=5;
+		int updateDiscount=13;
 		DiscountService.updateDiscount(updateDiscount);
 		int currentDiscount=DiscountService.getDiscount();
-		assertEquals(5,currentDiscount);
+		assertEquals(13,currentDiscount);
 	}
 
 }
